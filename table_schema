@@ -205,6 +205,96 @@
         "mode": "NULLABLE"
     },
     {
+        "name": "campaign_code",
+        "type": "STRING",
+        "mode": "NULLABLE"
+    },
+    {
+        "name": "campaign_name",
+        "type": "STRING",
+        "mode": "NULLABLE"
+    },
+    {
+        "name": "campaign_source",
+        "type": "STRING",
+        "mode": "NULLABLE"
+    },
+    {
+        "name": "campaign_medium",
+        "type": "STRING",
+        "mode": "NULLABLE"
+    },
+    {
+        "name": "campaign_term",
+        "type": "STRING",
+        "mode": "NULLABLE"
+    },
+    {
+        "name": "campaign_content",
+        "type": "STRING",
+        "mode": "NULLABLE"
+    },
+    {
+        "name": "url_protocol",
+        "type": "STRING",
+        "mode": "NULLABLE"
+    },
+    {
+        "name": "url_hostname",
+        "type": "STRING",
+        "mode": "NULLABLE"
+    },
+    {
+        "name": "url_pathname",
+        "type": "STRING",
+        "mode": "NULLABLE"
+    },
+    {
+        "name": "url_search",
+        "type": "STRING",
+        "mode": "NULLABLE"
+    },
+    {
+        "name": "url_hash",
+        "type": "STRING",
+        "mode": "NULLABLE"
+    },
+    {
+        "name": "url_query",
+        "type": "STRING",
+        "mode": "NULLABLE"
+    },
+    {
+        "name": "referrer_protocol",
+        "type": "STRING",
+        "mode": "NULLABLE"
+    },
+    {
+        "name": "referrer_hostname",
+        "type": "STRING",
+        "mode": "NULLABLE"
+    },
+    {
+        "name": "referrer_pathname",
+        "type": "STRING",
+        "mode": "NULLABLE"
+    },
+    {
+        "name": "referrer_search",
+        "type": "STRING",
+        "mode": "NULLABLE"
+    },
+    {
+        "name": "referrer_hash",
+        "type": "STRING",
+        "mode": "NULLABLE"
+    },
+    {
+        "name": "referrer_query",
+        "type": "STRING",
+        "mode": "NULLABLE"
+    },
+    {
         "name": "custom_attr",
         "type": "STRING",
         "mode": "NULLABLE"
