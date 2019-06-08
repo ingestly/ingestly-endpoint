@@ -1,0 +1,292 @@
+[
+    {
+        "name": "timestamp",
+        "type": "TIMESTAMP",
+        "mode": "REQUIRED"
+    },
+    {
+        "name": "action",
+        "type": "STRING",
+        "mode": "REQUIRED"
+    },
+    {
+        "name": "category",
+        "type": "STRING",
+        "mode": "REQUIRED"
+    },
+    {
+        "name": "request_id",
+        "type": "STRING",
+        "mode": "REQUIRED"
+    },
+    {
+        "name": "ingestly_id",
+        "type": "STRING",
+        "mode": "REQUIRED"
+    },
+    {
+        "name": "root_id",
+        "type": "STRING",
+        "mode": "NULLABLE"
+    },
+    {
+        "name": "since_init_ms",
+        "type": "INTEGER",
+        "mode": "NULLABLE"
+    },
+    {
+        "name": "since_prev_ms",
+        "type": "INTEGER",
+        "mode": "NULLABLE"
+    },
+    {
+        "name": "client_ip",
+        "type": "STRING",
+        "mode": "NULLABLE"
+    },
+    {
+        "name": "user_agent",
+        "type": "STRING",
+        "mode": "NULLABLE"
+    },
+    {
+        "name": "user_id",
+        "type": "STRING",
+        "mode": "NULLABLE"
+    },
+    {
+        "name": "user_status",
+        "type": "STRING",
+        "mode": "NULLABLE"
+    },
+    {
+        "name": "user_attr",
+        "type": "STRING",
+        "mode": "NULLABLE"
+    },
+    {
+        "name": "page_url",
+        "type": "STRING",
+        "mode": "NULLABLE"
+    },
+    {
+        "name": "page_referrer",
+        "type": "STRING",
+        "mode": "NULLABLE"
+    },
+    {
+        "name": "page_title",
+        "type": "STRING",
+        "mode": "NULLABLE"
+    },
+    {
+        "name": "page_attr",
+        "type": "STRING",
+        "mode": "NULLABLE"
+    },
+    {
+        "name": "content_id",
+        "type": "STRING",
+        "mode": "NULLABLE"
+    },
+    {
+        "name": "content_headline",
+        "type": "STRING",
+        "mode": "NULLABLE"
+    },
+    {
+        "name": "content_status",
+        "type": "STRING",
+        "mode": "NULLABLE"
+    },
+    {
+        "name": "content_attr",
+        "type": "STRING",
+        "mode": "NULLABLE"
+    },
+    {
+        "name": "viewport_height",
+        "type": "FLOAT",
+        "mode": "NULLABLE"
+    },
+    {
+        "name": "viewport_width",
+        "type": "FLOAT",
+        "mode": "NULLABLE"
+    },
+    {
+        "name": "screen_height",
+        "type": "FLOAT",
+        "mode": "NULLABLE"
+    },
+    {
+        "name": "screen_width",
+        "type": "FLOAT",
+        "mode": "NULLABLE"
+    },
+    {
+        "name": "screen_orientation",
+        "type": "STRING",
+        "mode": "NULLABLE"
+    },
+    {
+        "name": "device_type",
+        "type": "STRING",
+        "mode": "NULLABLE"
+    },
+    {
+        "name": "device_os",
+        "type": "STRING",
+        "mode": "NULLABLE"
+    },
+    {
+        "name": "device_platform",
+        "type": "STRING",
+        "mode": "NULLABLE"
+    },
+    {
+        "name": "timing_interactive",
+        "type": "INTEGER",
+        "mode": "NULLABLE"
+    },
+    {
+        "name": "timing_dcl",
+        "type": "INTEGER",
+        "mode": "NULLABLE"
+    },
+    {
+        "name": "timing_complete",
+        "type": "INTEGER",
+        "mode": "NULLABLE"
+    },
+    {
+        "name": "page_height",
+        "type": "FLOAT",
+        "mode": "NULLABLE"
+    },
+    {
+        "name": "scroll_depth",
+        "type": "FLOAT",
+        "mode": "NULLABLE"
+    },
+    {
+        "name": "scroll_unit",
+        "type": "STRING",
+        "mode": "NULLABLE"
+    },
+    {
+        "name": "click_tag",
+        "type": "STRING",
+        "mode": "NULLABLE"
+    },
+    {
+        "name": "click_id",
+        "type": "STRING",
+        "mode": "NULLABLE"
+    },
+    {
+        "name": "click_class",
+        "type": "STRING",
+        "mode": "NULLABLE"
+    },
+    {
+        "name": "click_path",
+        "type": "STRING",
+        "mode": "NULLABLE"
+    },
+    {
+        "name": "click_link",
+        "type": "STRING",
+        "mode": "NULLABLE"
+    },
+    {
+        "name": "click_attr",
+        "type": "STRING",
+        "mode": "NULLABLE"
+    },
+    {
+        "name": "custom_attr",
+        "type": "STRING",
+        "mode": "NULLABLE"
+    },
+    {
+        "name": "is_tls",
+        "type": "BOOLEAN",
+        "mode": "NULLABLE"
+    },
+    {
+        "name": "is_ipv6",
+        "type": "BOOLEAN",
+        "mode": "NULLABLE"
+    },
+    {
+        "name": "request_accept_language",
+        "type": "STRING",
+        "mode": "NULLABLE"
+    },
+    {
+        "name": "request_accept_charset",
+        "type": "STRING",
+        "mode": "NULLABLE"
+    },
+    {
+        "name": "request_referer",
+        "type": "STRING",
+        "mode": "NULLABLE"
+    },
+    {
+        "name": "geo_continent_code",
+        "type": "STRING",
+        "mode": "NULLABLE"
+    },
+    {
+        "name": "geo_region",
+        "type": "STRING",
+        "mode": "NULLABLE"
+    },
+    {
+        "name": "geo_country_name",
+        "type": "STRING",
+        "mode": "NULLABLE"
+    },
+    {
+        "name": "geo_country_code",
+        "type": "STRING",
+        "mode": "NULLABLE"
+    },
+    {
+        "name": "geo_city",
+        "type": "STRING",
+        "mode": "NULLABLE"
+    },
+    {
+        "name": "geo_latitude",
+        "type": "FLOAT",
+        "mode": "NULLABLE"
+    },
+    {
+        "name": "geo_longitude",
+        "type": "FLOAT",
+        "mode": "NULLABLE"
+    },
+    {
+        "name": "geo_gmt_offset",
+        "type": "STRING",
+        "mode": "NULLABLE"
+    },
+    {
+        "name": "geo_conn_speed",
+        "type": "STRING",
+        "mode": "NULLABLE"
+    },
+    {
+        "name": "server_datacenter",
+        "type": "STRING",
+        "mode": "NULLABLE"
+    },
+    {
+        "name": "server_region",
+        "type": "STRING",
+        "mode": "NULLABLE"
+    }
+]
