@@ -205,6 +205,31 @@
         "mode": "NULLABLE"
     },
     {
+        "name": "media_src",
+        "type": "STRING",
+        "mode": "NULLABLE"
+    },
+    {
+        "name": "media_current_time",
+        "type": "FLOAT",
+        "mode": "NULLABLE"
+    },
+    {
+        "name": "media_duration",
+        "type": "FLOAT",
+        "mode": "NULLABLE"
+    },
+    {
+        "name": "media_played_percent",
+        "type": "FLOAT",
+        "mode": "NULLABLE"
+    },
+    {
+        "name": "media_attr",
+        "type": "STRING",
+        "mode": "NULLABLE"
+    },
+    {
         "name": "campaign_code",
         "type": "STRING",
         "mode": "NULLABLE"
