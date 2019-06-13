@@ -40,7 +40,7 @@ sub vcl_error {
     if(req.http.Cookie:ingestlyId){
       set var.ingestly_id = req.http.Cookie:ingestlyId;
     }else{
-      set var.ingestly_id = subfield(req.url.qs, "deviceId", "&");
+      set var.ingestly_id = subfield(req.url.qs, "ingestlyId", "&");
     }
 
     if (obj.status == 200) {
