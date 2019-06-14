@@ -175,6 +175,21 @@
         "mode": "NULLABLE"
     },
     {
+        "name": "read_rate",
+        "type": "FLOAT",
+        "mode": "NULLABLE"
+    },
+    {
+        "name": "read_text_length",
+        "type": "FLOAT",
+        "mode": "NULLABLE"
+    },
+    {
+        "name": "read_content_height",
+        "type": "FLOAT",
+        "mode": "NULLABLE"
+    },
+    {
         "name": "click_tag",
         "type": "STRING",
         "mode": "NULLABLE"
