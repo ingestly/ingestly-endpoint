@@ -1,7 +1,7 @@
 # Ingestly Endpoint
 
 - [Japanese Document available here / 日本語ドキュメントはこちら](./README-JP.md)
-- [Column Reference is here](./COLUMNS.md)
+- [Column Reference is here](https://github.com/ingestly/ingestly-docs/blob/master/COLUMNS.md)
 
 ## What's Ingestly?
 
