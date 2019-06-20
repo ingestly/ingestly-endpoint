@@ -58,7 +58,7 @@ sub vcl_error {
     }
 
     set obj.http.Access-Control-Allow-Origin = "*";
-    set obj.http.Set-Cookie  = "ingestlyId=" + var.ingestly_id + "; Max-Age=" + var.cookie_lifetime + "; Domain=" + var.cookie_domain + "; Path=/; Secure; HttpOnly; SameSite=Lax;";
+    set obj.http.Set-Cookie  = "ingestlyId=" + var.ingestly_id + "; Max-Age=" + var.cookie_lifetime + "; Domain=" + var.cookie_domain + "; Path=/; SameSite=Lax;";
     set obj.http.Cache-Control = "no-store";
     return (deliver);
   }
