@@ -185,6 +185,11 @@
         "mode": "NULLABLE"
     },
     {
+        "name": "read_target_index",
+        "type": "INTEGER",
+        "mode": "NULLABLE"
+    },
+    {
         "name": "read_content_height",
         "type": "FLOAT",
         "mode": "NULLABLE"
@@ -211,6 +216,11 @@
     },
     {
         "name": "click_link",
+        "type": "STRING",
+        "mode": "NULLABLE"
+    },
+    {
+        "name": "click_text",
         "type": "STRING",
         "mode": "NULLABLE"
     },
