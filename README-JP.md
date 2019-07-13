@@ -56,7 +56,7 @@ Ingestlyは、Fastlyを活用してフロントエンドからGoogle BigQueryへ
 1. CONFIGUREページから `Logging` を開きます。
 2. `CREATE ENDPOINT` をクリックし、 `Google BigQuery` を選択します。
 3. ハイライトされている `CONDITION` の近くにある `attach a condition.` リンクを開き、`CREATE A NEW RESPONSE CONDITION` を選択します。
-4. `Data Ingestion` のような名前を入力し、 `Apply if…` には `resp.status == 204 && req.url ~ "^/ingestly-ingest/(.*?)/\?.*"` をセットします。
+4. `Data Ingestion` のような名前を入力し、 `Apply if…` には `(resp.status == 204 && req.url ~ "^/ingestly-ingest/(.*?)/\?.*" || resp.status == 200 && req.url ~ "^/ingestly-sync/(.*?)/\?.*")` をセットします。
 5. 各設定項目に情報を：
     - `Name` ： お好きな名前
     - `Log format` ： このリポジトリの `log_format` ファイルの中身をコピー＆ペースト
