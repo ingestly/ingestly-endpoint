@@ -13,7 +13,7 @@
   "user_status":"%{json.escape(urldecode(subfield(req.url.qs, "usStatus", "&")))}V",
   "user_attr":"%{json.escape(urldecode(subfield(req.url.qs, "usAttr", "&")))}V",
   "page_url":"%{json.escape(urldecode(subfield(req.url.qs, "pgUrl", "&")))}V",
-  "page_referrer":"%{json.escape(urldecode(subfield(req.url.qs, "pgReferrer", "&")))}V",
+  "page_referrer":"%{json.escape(urldecode(subfield(req.url.qs, "pgRef", "&")))}V",
   "page_title":"%{json.escape(urldecode(subfield(req.url.qs, "pgTitle", "&")))}V",
   "page_attr":"%{json.escape(urldecode(subfield(req.url.qs, "pgAttr", "&")))}V",
   "content_id":"%{json.escape(urldecode(subfield(req.url.qs, "cnId", "&")))}V",
