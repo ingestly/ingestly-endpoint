@@ -175,6 +175,21 @@
         "mode": "NULLABLE"
     },
     {
+        "name": "read_target_index",
+        "type": "INTEGER",
+        "mode": "NULLABLE"
+    },
+    {
+        "name": "read_target_id",
+        "type": "STRING",
+        "mode": "NULLABLE"
+    },
+    {
+        "name": "read_text_start_with",
+        "type": "STRING",
+        "mode": "NULLABLE"
+    },
+    {
         "name": "read_rate",
         "type": "FLOAT",
         "mode": "NULLABLE"
@@ -185,13 +200,13 @@
         "mode": "NULLABLE"
     },
     {
-        "name": "read_target_index",
-        "type": "INTEGER",
+        "name": "read_content_height",
+        "type": "FLOAT",
         "mode": "NULLABLE"
     },
     {
-        "name": "read_content_height",
-        "type": "FLOAT",
+        "name": "read_attr",
+        "type": "STRING",
         "mode": "NULLABLE"
     },
     {
