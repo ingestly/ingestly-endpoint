@@ -160,6 +160,21 @@
         "mode": "NULLABLE"
     },
     {
+        "name": "timing_timing_elapsed_ms",
+        "type": "INTEGER",
+        "mode": "NULLABLE"
+    },
+    {
+        "name": "navigation_type",
+        "type": "INTEGER",
+        "mode": "NULLABLE"
+    },
+    {
+        "name": "navigation_redirect_count",
+        "type": "INTEGER",
+        "mode": "NULLABLE"
+    },
+    {
         "name": "page_height",
         "type": "FLOAT",
         "mode": "NULLABLE"
