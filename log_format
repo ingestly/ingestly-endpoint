@@ -31,7 +31,7 @@
   "timing_interactive":"%{if(subfield(req.url.qs, "ptInteractive", "&"), json.escape(subfield(req.url.qs, "ptInteractive", "&")), "-1")}V",
   "timing_dcl":"%{if(subfield(req.url.qs, "ptDcl", "&"), json.escape(subfield(req.url.qs, "ptDcl", "&")), "-1")}V",
   "timing_complete":"%{if(subfield(req.url.qs, "ptComplete", "&"), json.escape(subfield(req.url.qs, "ptComplete", "&")), "-1")}V",
-  "page_height":"%{if(subfield(req.url.qs, "pgHeight", "&"), subfield(req.url.qs, "pgHeight", "&"), "-1")}V",
+  "page_height":"%{if(subfield(req.url.qs, "pgH", "&"), subfield(req.url.qs, "pgH", "&"), "-1")}V",
   "scroll_depth":"%{if(subfield(req.url.qs, "srDepth", "&"), subfield(req.url.qs, "srDepth", "&"), "-1")}V",
   "scroll_unit":"%{json.escape(subfield(req.url.qs, "srUnit", "&"))}V",
   "read_target_index":"%{if(subfield(req.url.qs, "rdIdx", "&"), subfield(req.url.qs, "rdIdx", "&"), "-1")}V",
