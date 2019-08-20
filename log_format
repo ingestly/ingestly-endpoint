@@ -28,7 +28,7 @@
   "device_type":"%{json.escape(urldecode(subfield(req.url.qs, "dvType", "&")))}V",
   "device_os":"%{json.escape(urldecode(subfield(req.url.qs, "dvOs", "&")))}V",
   "device_platform":"%{json.escape(urldecode(subfield(req.url.qs, "dvPlatform", "&")))}V",
-  "timing_interactive":"%{if(subfield(req.url.qs, "ptInteractive", "&"), json.escape(subfield(req.url.qs, "ptInteractive", "&")), "-1")}V",
+  "timing_interactive":"%{if(subfield(req.url.qs, "ptTti", "&"), json.escape(subfield(req.url.qs, "ptTti", "&")), "-1")}V",
   "timing_dcl":"%{if(subfield(req.url.qs, "ptDcl", "&"), json.escape(subfield(req.url.qs, "ptDcl", "&")), "-1")}V",
   "timing_complete":"%{if(subfield(req.url.qs, "ptComplete", "&"), json.escape(subfield(req.url.qs, "ptComplete", "&")), "-1")}V",
   "timing_elapsed_ms":"%{if(subfield(req.url.qs, "ptElapsedMs", "&"), json.escape(subfield(req.url.qs, "ptElapsedMs", "&")), "-1")}V",
