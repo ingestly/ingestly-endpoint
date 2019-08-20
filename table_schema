@@ -160,7 +160,7 @@
         "mode": "NULLABLE"
     },
     {
-        "name": "timing_timing_elapsed_ms",
+        "name": "timing_elapsed_ms",
         "type": "INTEGER",
         "mode": "NULLABLE"
     },
