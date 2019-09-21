@@ -1,0 +1,224 @@
+{
+  "order": 0,
+  "index_patterns": [
+    "ingestly"
+  ],
+  "settings": {
+    "index": {
+      "codec": "best_compression",
+      "mapping": {
+        "nested_fields": {
+          "limit": "25"
+        },
+        "total_fields": {
+          "limit": "2000"
+        },
+        "depth": {
+          "limit": "8"
+        }
+      },
+      "max_docvalue_fields_search": "256",
+      "analysis": {
+        "analyzer": {
+          "kuro": {
+            "filter": [
+              "kuromoji_baseform",
+              "kuromoji_part_of_speech",
+              "ja_stop",
+              "kuromoji_number",
+              "kuromoji_stemmer"
+            ],
+            "char_filter": [
+              "icu_normalizer",
+              "kuromoji_iteration_mark"
+            ],
+            "type": "custom",
+            "tokenizer": "kuromoji_tokenizer"
+          }
+        }
+      },
+      "number_of_replicas": "0"
+    }
+  },
+  "mappings": {
+    "_source": {
+      "enabled": true
+    },
+    "properties": {
+      "timestamp": {
+        "type": "date"
+      },
+      "since_init_ms": {
+        "type": "integer"
+      },
+      "since_prev_ms": {
+        "type": "integer"
+      },
+      "connection": {
+        "properties": {
+          "client_ip": {
+            "type": "ip"
+          },
+          "is_ipv6": {
+            "type": "boolean"
+          },
+          "is_tls": {
+            "type": "boolean"
+          }
+        }
+      },
+      "device": {
+        "properties": {
+          "screen_height": {
+            "type": "integer"
+          },
+          "screen_width": {
+            "type": "integer"
+          },
+          "viewport_height": {
+            "type": "integer"
+          },
+          "viewport_width": {
+            "type": "integer"
+          }
+        }
+      },
+      "geo": {
+        "properties": {
+          "gmt_offset": {
+            "type": "keyword"
+          },
+          "latitude": {
+            "type": "float"
+          },
+          "longitude": {
+            "type": "float"
+          },
+          "region": {
+            "type": "short"
+          },
+          "geo_point": {
+            "type": "geo_point"
+          }
+        }
+      },
+      "media": {
+        "properties": {
+          "current_time": {
+            "type": "double"
+          },
+          "duration": {
+            "type": "double"
+          },
+          "played_percent": {
+            "type": "float"
+          }
+        }
+      },
+      "navigation": {
+        "properties": {
+          "redirect_count": {
+            "type": "short"
+          },
+          "type": {
+            "type": "short"
+          }
+        }
+      },
+      "page": {
+        "properties": {
+          "height": {
+            "type": "long"
+          },
+          "analyzed_title": {
+            "type": "text",
+            "analyzer": "kuro",
+            "fielddata": true
+          }
+        }
+      },
+      "performance": {
+        "properties": {
+          "complete": {
+            "type": "integer"
+          },
+          "dcl": {
+            "type": "integer"
+          },
+          "elapsed_ms": {
+            "type": "integer"
+          },
+          "interactive": {
+            "type": "integer"
+          }
+        }
+      },
+      "read_through": {
+        "properties": {
+          "content_height": {
+            "type": "double"
+          },
+          "rate": {
+            "type": "float"
+          },
+          "target_index": {
+            "type": "integer"
+          },
+          "text_length": {
+            "type": "integer"
+          },
+          "analyzed_text_start_with": {
+            "type": "text",
+            "analyzer": "kuro",
+            "fielddata": true
+          }
+        }
+      },
+      "scroll_depth": {
+        "properties": {
+          "depth": {
+            "type": "double"
+          }
+        }
+
+      }
+    },
+    "dynamic_templates": [{
+        "objects": {
+          "mapping": {
+            "type": "object"
+          },
+          "match_mapping_type": "object",
+          "match": "*"
+        }
+      },
+      {
+        "any_timestamp": {
+          "mapping": {
+            "type": "date"
+          },
+          "match": "*_timestamp"
+        }
+      },
+      {
+        "any_ip_address": {
+          "mapping": {
+            "type": "ip"
+          },
+          "match": "*_ip"
+        }
+      },
+      {
+        "any_text_wo_analyze": {
+          "mapping": {
+            "type": "keyword",
+            "ignore_above": 2048
+          },
+          "match": "*"
+        }
+      }
+    ]
+
+  },
+  "aliases": {}
+}
