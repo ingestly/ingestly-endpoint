@@ -1,0 +1,130 @@
+{
+  "timestamp":"%{begin:%Y-%m-%dT%H:%M:%S}t.%{msec_frac}t",
+  "action":"%{json.escape(urldecode(subfield(req.url.qs, "action", "&")))}V",
+  "category":"%{json.escape(urldecode(subfield(req.url.qs, "category", "&")))}V",
+  "request_id":"%{digest.hash_sha256(req.url)}V",
+  "ingestly_id":"%{json.escape(if(req.http.Cookie:ingestlyId, req.http.Cookie:ingestlyId, subfield(req.url.qs, "ingestlyId", "&")))}V",
+  "root_id":"%{json.escape(urldecode(subfield(req.url.qs, "rootId", "&")))}V",
+  "since_init_ms":"%{if(subfield(req.url.qs, "sinceInitMs", "&"), subfield(req.url.qs, "sinceInitMs", "&"), "-1")}V",
+  "since_prev_ms":"%{if(subfield(req.url.qs, "sincePrevMs", "&"), subfield(req.url.qs, "sincePrevMs", "&"), "-1")}V",
+  "user": {
+    "id":"%{json.escape(urldecode(subfield(req.url.qs, "usId", "&")))}V",
+    "status":"%{json.escape(urldecode(subfield(req.url.qs, "usStatus", "&")))}V",
+    "attr":%{if(subfield(req.url.qs, "usAttr", "&"), urldecode(subfield(req.url.qs, "usAttr", "&")), "\{\}")}V
+  },
+  "page": {
+    "url":"%{json.escape(urldecode(subfield(req.url.qs, "pgUrl", "&")))}V",
+    "referrer":"%{json.escape(urldecode(subfield(req.url.qs, "pgRef", "&")))}V",
+    "title":"%{json.escape(urldecode(subfield(req.url.qs, "pgTitle", "&")))}V",
+    "analyzed_title":"%{json.escape(urldecode(subfield(req.url.qs, "pgTitle", "&")))}V",
+    "height":"%{if(subfield(req.url.qs, "pgH", "&"), subfield(req.url.qs, "pgH", "&"), "-1")}V",
+    "attr":%{if(subfield(req.url.qs, "pgAttr", "&"), urldecode(subfield(req.url.qs, "pgAttr", "&")), "\{\}")}V
+  },
+  "content": {
+    "id":"%{json.escape(urldecode(subfield(req.url.qs, "cnId", "&")))}V",
+    "headline":"%{json.escape(urldecode(subfield(req.url.qs, "cnHeadline", "&")))}V",
+    "status":"%{json.escape(urldecode(subfield(req.url.qs, "cnStatus", "&")))}V",
+    "attr":%{if(subfield(req.url.qs, "cnAttr", "&"), urldecode(subfield(req.url.qs, "cnAttr", "&")), "\{\}")}V
+  },
+  "device": {
+    "user_agent":"%{json.escape(req.http.User-Agent)}V",
+    "type":"%{json.escape(urldecode(subfield(req.url.qs, "dvType", "&")))}V",
+    "os":"%{json.escape(urldecode(subfield(req.url.qs, "dvOs", "&")))}V",
+    "platform":"%{json.escape(urldecode(subfield(req.url.qs, "dvPlatform", "&")))}V",
+    "viewport_height":"%{if(subfield(req.url.qs, "vpHeight", "&"), subfield(req.url.qs, "vpHeight", "&"), "-1")}V",
+    "viewport_width":"%{if(subfield(req.url.qs, "vpWidth", "&"), subfield(req.url.qs, "vpWidth", "&"), "-1")}V",
+    "screen_height":"%{if(subfield(req.url.qs, "scHeight", "&"), subfield(req.url.qs, "scHeight", "&"), "-1")}V",
+    "screen_width":"%{if(subfield(req.url.qs, "scWidth", "&"), subfield(req.url.qs, "scWidth", "&"), "-1")}V",
+    "screen_orientation":"%{json.escape(urldecode(subfield(req.url.qs, "scOrientation", "&")))}V"
+  },
+  "performance": {
+    "interactive":"%{if(subfield(req.url.qs, "ptTti", "&"), json.escape(subfield(req.url.qs, "ptTti", "&")), "-1")}V",
+    "dcl":"%{if(subfield(req.url.qs, "ptDcl", "&"), json.escape(subfield(req.url.qs, "ptDcl", "&")), "-1")}V",
+    "complete":"%{if(subfield(req.url.qs, "ptComplete", "&"), json.escape(subfield(req.url.qs, "ptComplete", "&")), "-1")}V",
+    "elapsed_ms":"%{if(subfield(req.url.qs, "ptElapsedMs", "&"), json.escape(subfield(req.url.qs, "ptElapsedMs", "&")), "-1")}V"
+  },
+  "navigation": {
+    "type":"%{if(subfield(req.url.qs, "nvType", "&"), json.escape(subfield(req.url.qs, "nvType", "&")), "-1")}V",
+    "redirect_count":"%{if(subfield(req.url.qs, "nvRdCnt", "&"), json.escape(subfield(req.url.qs, "nvRdCnt", "&")), "-1")}V"
+  },
+  "scroll_depth": {
+    "depth":"%{if(subfield(req.url.qs, "srDepth", "&"), subfield(req.url.qs, "srDepth", "&"), "-1")}V",
+    "unit":"%{json.escape(subfield(req.url.qs, "srUnit", "&"))}V"
+  },
+  "read_through": {
+    "target_index":"%{if(subfield(req.url.qs, "rdIdx", "&"), subfield(req.url.qs, "rdIdx", "&"), "-1")}V",
+    "target_id":"%{json.escape(urldecode(subfield(req.url.qs, "rdId", "&")))}V",
+    "text_start_with":"%{json.escape(urldecode(subfield(req.url.qs, "rdTxS", "&")))}V",
+    "analyzed_text_start_with":"%{json.escape(urldecode(subfield(req.url.qs, "rdTxS", "&")))}V",
+    "rate":"%{if(subfield(req.url.qs, "rdRate", "&"), subfield(req.url.qs, "rdRate", "&"), "-1")}V",
+    "text_length":"%{if(subfield(req.url.qs, "rdTxL", "&"), subfield(req.url.qs, "rdTxL", "&"), "-1")}V",
+    "content_height":"%{if(subfield(req.url.qs, "rdTgH", "&"), subfield(req.url.qs, "rdTgH", "&"), "-1")}V",
+    "attr":%{if(subfield(req.url.qs, "rdAttr", "&"), urldecode(subfield(req.url.qs, "rdAttr", "&")), "\{\}")}V
+  },
+  "click": {
+    "tag":"%{json.escape(urldecode(subfield(req.url.qs, "clTag", "&")))}V",
+    "id":"%{json.escape(urldecode(subfield(req.url.qs, "clId", "&")))}V",
+    "class":"%{json.escape(urldecode(subfield(req.url.qs, "clClass", "&")))}V",
+    "path":"%{json.escape(urldecode(subfield(req.url.qs, "clPath", "&")))}V",
+    "link":"%{json.escape(urldecode(subfield(req.url.qs, "clLink", "&")))}V",
+    "text":"%{json.escape(urldecode(subfield(req.url.qs, "clText", "&")))}V",
+    "attr":%{if(subfield(req.url.qs, "clAttr", "&"), urldecode(subfield(req.url.qs, "clAttr", "&")), "\{\}")}V
+  },
+  "media": {
+    "src":"%{json.escape(urldecode(subfield(req.url.qs, "mdSrc", "&")))}V",
+    "current_time":"%{if(subfield(req.url.qs, "mdCurrentTime", "&"), subfield(req.url.qs, "mdCurrentTime", "&"), "-1")}V",
+    "duration":"%{if(subfield(req.url.qs, "mdDuration", "&"), subfield(req.url.qs, "mdDuration", "&"), "-1")}V",
+    "played_percent":"%{if(subfield(req.url.qs, "mdPlayedPercent", "&"), subfield(req.url.qs, "mdPlayedPercent", "&"), "-1")}V",
+    "attr":%{if(subfield(req.url.qs, "mdAttr", "&"), urldecode(subfield(req.url.qs, "mdAttr", "&")), "\{\}")}V
+  },
+  "campaign": {
+    "code":"%{json.escape(urldecode(subfield(req.url.qs, "cpCode", "&")))}V",
+    "name":"%{json.escape(urldecode(subfield(req.url.qs, "cpName", "&")))}V",
+    "source":"%{json.escape(urldecode(subfield(req.url.qs, "cpSource", "&")))}V",
+    "medium":"%{json.escape(urldecode(subfield(req.url.qs, "cpMedium", "&")))}V",
+    "term":"%{json.escape(urldecode(subfield(req.url.qs, "cpTerm", "&")))}V",
+    "content":"%{json.escape(urldecode(subfield(req.url.qs, "cpContent", "&")))}V"
+  },
+  "url": {
+    "protocol":"%{json.escape(urldecode(subfield(req.url.qs, "urProtocol", "&")))}V",
+    "hostname":"%{json.escape(urldecode(subfield(req.url.qs, "urHost", "&")))}V",
+    "pathname":"%{json.escape(urldecode(subfield(req.url.qs, "urPath", "&")))}V",
+    "search":"%{json.escape(urldecode(subfield(req.url.qs, "urSearch", "&")))}V",
+    "hash":"%{json.escape(urldecode(subfield(req.url.qs, "urHash", "&")))}V",
+    "query":"%{json.escape(urldecode(subfield(req.url.qs, "urQuery", "&")))}V"
+  },
+  "referrer":{
+    "protocol":"%{json.escape(urldecode(subfield(req.url.qs, "rfProtocol", "&")))}V",
+    "hostname":"%{json.escape(urldecode(subfield(req.url.qs, "rfHost", "&")))}V",
+    "pathname":"%{json.escape(urldecode(subfield(req.url.qs, "rfPath", "&")))}V",
+    "search":"%{json.escape(urldecode(subfield(req.url.qs, "rfSearch", "&")))}V",
+    "hash":"%{json.escape(urldecode(subfield(req.url.qs, "rfHash", "&")))}V",
+    "query":"%{json.escape(urldecode(subfield(req.url.qs, "rfQuery", "&")))}V"
+  },
+  "geo": {
+    "continent_code":"%{client.geo.continent_code}V",
+    "region":"%{client.geo.region}V",
+    "country_name":"%{client.geo.country_name}V",
+    "country_code":"%{client.geo.country_code}V",
+    "city":"%{client.geo.city}V",
+    "latitude":"%{client.geo.latitude}V",
+    "longitude":"%{client.geo.longitude}V",
+    "geo_point": {
+      "lat":"%{client.geo.latitude}V",
+      "lon":"%{client.geo.longitude}V"
+    },
+    "gmt_offset":"%{client.geo.gmt_offset}V",
+    "conn_speed":"%{client.geo.conn_speed}V"
+  },
+  "connection": {
+    "client_ip":"%{req.http.Fastly-Client-IP}V",
+    "is_tls":%{if(req.is_ssl, "true", "false")}V,
+    "is_ipv6":%{if(req.is_ipv6, "true", "false")}V,
+    "request_accept_language":"%{json.escape(req.http.Accept-Language)}V",
+    "request_accept_charset":"%{json.escape(req.http.Accept-Charset)}V",
+    "request_referer":"%{json.escape(req.http.Referer)}V",
+    "server_datacenter":"%{server.datacenter}V",
+    "server_region":"%{server.region}V"
+  },
+  "custom_attr":%{if(subfield(req.url.qs, "customAttr", "&"), urldecode(subfield(req.url.qs, "customAttr", "&")), "\{\}")}V
+}

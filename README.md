@@ -40,7 +40,7 @@ Also, Ingestly can be implemented seamlessly into your existing web site with in
 1. Go to the GCP console, then open `BigQuery`.
 2. Create a dataset like `Ingestly` if you haven't have.
 3. Create a table with your preferred table name like `logs`, then enable `Edit as text` in Schema section. (note your table name)
-4. Open `table_schema` file in this repository, copy the content and paste it to the schema text box of table creation modal.
+4. Open `BigQuery/table_schema` file in this repository, copy the content and paste it to the schema text box of table creation modal.
 5. In the `Partition and cluster settings` section, Select `timestamp` column for partitioning.
 6. Finish creating the table.
 
@@ -58,7 +58,7 @@ Also, Ingestly can be implemented seamlessly into your existing web site with in
 4. Enter a name like `Data Ingestion` and set `(resp.status == 204 && req.url ~ "^/ingestly-ingest/(.*?)/\?.*" || resp.status == 200 && req.url ~ "^/ingestly-sync/(.*?)/\?.*")` into `Apply if…` field.
 5. Fill information into fields:
     - `Name` : anything you want.
-    - `Log format` : copy and paste the content of `log_format` file in this repository.
+    - `Log format` : copy and paste the content of `BigQuery/log_format` file in this repository.
     - `Email` : a value from `client_email` field of GCP credential JSON file.
     - `Secret key` : a value from `private_key` field of GCP credential JSON file.
     - `Project ID` : your project ID of GCP.

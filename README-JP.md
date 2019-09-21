@@ -41,7 +41,7 @@ Ingestlyは、Fastlyを活用してフロントエンドからGoogle BigQueryへ
 1. GCPコンソールから `BigQuery` を開きます。
 2. まだデータセットをお持ちで無ければ、`Ingestly` のようなデータセットを作成します。
 3. `logs` のような任意の名前のテーブルを作成し、スキーマ欄の `テキストとして編集` を有効にします。（テーブル名を控えておきます）
-4. このリポジトリの `table_schema` ファイルを開き、中身をコピー、テーブル作成画面のスキーマのテキストボックスにペーストします。
+4. このリポジトリの `BigQuery/table_schema` ファイルを開き、中身をコピー、テーブル作成画面のスキーマのテキストボックスにペーストします。
 5. `パーティションとクラスタの設定` 欄でパーティショニングに `timestamp` カラムを選択します。
 6. テーブル作成を完了します。
 
@@ -59,7 +59,7 @@ Ingestlyは、Fastlyを活用してフロントエンドからGoogle BigQueryへ
 4. `Data Ingestion` のような名前を入力し、 `Apply if…` には `(resp.status == 204 && req.url ~ "^/ingestly-ingest/(.*?)/\?.*" || resp.status == 200 && req.url ~ "^/ingestly-sync/(.*?)/\?.*")` をセットします。
 5. 各設定項目に情報を：
     - `Name` ： お好きな名前
-    - `Log format` ： このリポジトリの `log_format` ファイルの中身をコピー＆ペースト
+    - `Log format` ： このリポジトリの `BigQuery/log_format` ファイルの中身をコピー＆ペースト
     - `Email` ： GCP認証情報のJSONファイルの `client_email` の値
     - `Secret key` ： GCP認証情報のJSONファイルの `private_key` の値
     - `Project ID` ： GCPでのプロジェクトID
