@@ -21,6 +21,11 @@ Also, Ingestly can be implemented seamlessly into your existing web site with in
 
 ## Setup
 
+You can use one of BigQuery and Elasticsearch, or both as a database for logging. Fastly support multiple log-streaming in the same configuration.
+BigQuery support SQL and faster query speed with massive logs. Elasticsearch supports super flexible schema-less data structure.
+If you are going to use custom data (`*_attr` variables) frequently, or you wish to utilize Kibana's great visualization features, Elasticearch is better choice.
+If you will get huge records from the giant website, or you wish to use Data Studio, BigQuery gives you better performance within reasonable cost.
+
 ### Prerequisites
 - A [Google Cloud Platform](https://cloud.google.com/) account, and a project used for Ingestly.
 - A [Fastly](https://www.fastly.com/signup) account, and a service used for Ingestly.
@@ -44,6 +49,38 @@ Also, Ingestly can be implemented seamlessly into your existing web site with in
 5. In the `Partition and cluster settings` section, Select `timestamp` column for partitioning.
 6. Finish creating the table.
 
+### Elasticsearch
+
+#### Create an user for Fastly
+1. Open Kibana UI.
+2. Go to `Management > Security > Roles`.
+3. Click top-right `Create role` button.
+4. Name this role as `Ingestly`
+5. Type `ingestly` into `Indices` field manually.
+6. Select `create_index`, `create`, `index`, `read`, `write` and `monitor` in `Privileges` field, then save.
+7. Go to `Management > Security > Users`
+8. Click top-right `Create user` button.
+9. Name this role as `Ingestly` and fill each fields as you like.
+10. Select `Ingestly` from a role list, then save.
+
+#### Put a mapping template to Elasticsearch
+1. Go to `Dev Tools`.
+2. Type `PUT _template/ingestly` into the first line of Dev Tools console.
+3. Open `Elasticsearch/mapping_template.json` file and copy & paste the content to the second line of Dev Tools console.
+4. Click the triangle icon on the first line (execute the command)
+
+If you see `Custom Analyzer` related error message when you executed above process, you should chose one of the following selection.
+
+A. Add Natural Language Analysis plugins to Elasticsearch. `analysis-kuromoji` and `analysis-icu` are recommended.
+B. Remove `analysis` section (from line 22 to line 40) from `Elasticsearch/mapping_template.json` to deactivate Analyzer.
+
+#### Create an index pattern
+1. Go to `Management > Kibana > Index Patterns`.
+2. Click top-right `Create index pattern` button.
+3. Fill `ingestly` into `Index Pattern` field, then click `Next step`.
+4. Select `timestamp` from `Time Filter field name` pulldown, then click `Create index pattern`.
+
+
 ### Fastly
 
 #### Custom VCL
@@ -65,6 +102,20 @@ Also, Ingestly can be implemented seamlessly into your existing web site with in
     - `Dataset` : a dataset name you created for Ingestly. (eg. `Ingestly`)
     - `Table` : a table name you created for Ingestly. (eg. `logs`)
     - `Template` : this field can be empty but you can configure time-sliced tables if you enter like `%Y%m%d`.
+6. Click `CREATE` to finish the setup process.
+
+#### Integrate with Elasticsearch
+1. Open `Logging` in CONFIGURE page.
+2. Click `CREATE ENDPOINT` button and select `Elasticsearch`.
+3. Open `attach a condition.` link near highlighted `CONDITION`, and select `CREATE A NEW RESPONSE CONDITION`.
+4. Enter a name like `Data Ingestion` and set `(resp.status == 204 && req.url ~ "^/ingestly-ingest/(.*?)/\?.*" || resp.status == 200 && req.url ~ "^/ingestly-sync/(.*?)/\?.*")` into `Apply if…` field.
+5. Fill information into fields:
+    - `Name` : anything you want.
+    - `Log format` : copy and paste the content of `Elasticsearch/log_format` file in this repository.
+    - `URL` : An endpoint URL of Elasticsearch cluster.
+    - `Index` : An index name for Elasticsearch. Set `ingestly`.
+    - `BasicAuth user` : An username for Elasticsearch authentication. Set `Ingestly`.
+    - `BasicAuth password` : Set a password for user `Ingestly` on Elasticsearch cluster.
 6. Click `CREATE` to finish the setup process.
 
 ## Next Step
