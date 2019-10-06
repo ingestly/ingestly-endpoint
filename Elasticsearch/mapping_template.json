@@ -115,6 +115,19 @@
           }
         }
       },
+      "form": {
+        "properties": {
+          "started_since_init_ms": {
+            "type": "integer"
+          },
+          "ended_since_init_ms": {
+            "type": "integer"
+          },
+          "duration_ms": {
+            "type": "integer"
+          }
+        }
+      },
       "navigation": {
         "properties": {
           "redirect_count": {

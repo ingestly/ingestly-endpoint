@@ -285,6 +285,46 @@
         "mode": "NULLABLE"
     },
     {
+        "name": "form_name",
+        "type": "STRING",
+        "mode": "NULLABLE"
+    },
+    {
+        "name": "form_items",
+        "type": "STRING",
+        "mode": "NULLABLE"
+    },
+    {
+        "name": "form_first_item",
+        "type": "STRING",
+        "mode": "NULLABLE"
+    },
+    {
+        "name": "form_last_item",
+        "type": "STRING",
+        "mode": "NULLABLE"
+    },
+    {
+        "name": "form_started_since_init_ms",
+        "type": "INTEGER",
+        "mode": "NULLABLE"
+    },
+    {
+        "name": "form_ended_since_init_ms",
+        "type": "INTEGER",
+        "mode": "NULLABLE"
+    },
+    {
+        "name": "form_duration_ms",
+        "type": "INTEGER",
+        "mode": "NULLABLE"
+    },
+    {
+        "name": "form_attr",
+        "type": "STRING",
+        "mode": "NULLABLE"
+    },
+    {
         "name": "campaign_code",
         "type": "STRING",
         "mode": "NULLABLE"

@@ -77,6 +77,16 @@
     "played_percent":"%{if(subfield(req.url.qs, "mdPlayedPercent", "&"), subfield(req.url.qs, "mdPlayedPercent", "&"), "-1")}V",
     "attr":%{if(subfield(req.url.qs, "mdAttr", "&"), urldecode(subfield(req.url.qs, "mdAttr", "&")), "\{\}")}V
   },
+  "form": {
+    "name":"%{json.escape(urldecode(subfield(req.url.qs, "fmName", "&")))}V",
+    "items":"%{json.escape(urldecode(subfield(req.url.qs, "fmItems", "&")))}V",
+    "first_item":"%{json.escape(urldecode(subfield(req.url.qs, "fmFirstItem", "&")))}V",
+    "last_item":"%{json.escape(urldecode(subfield(req.url.qs, "fmLastItem", "&")))}V",
+    "started_since_init_ms":"%{if(subfield(req.url.qs, "fmStartedSinceInitMs", "&"), subfield(req.url.qs, "fmStartedSinceInitMs", "&"), "-1")}V",
+    "ended_since_init_ms":"%{if(subfield(req.url.qs, "fmEndedSinceInitMs", "&"), subfield(req.url.qs, "fmEndedSinceInitMs", "&"), "-1")}V",
+    "duration_ms":"%{if(subfield(req.url.qs, "fmDurationMs", "&"), subfield(req.url.qs, "fmDurationMs", "&"), "-1")}V",
+    "attr":%{if(subfield(req.url.qs, "fmAttr", "&"), urldecode(subfield(req.url.qs, "fmAttr", "&")), "\{\}")}V
+  },
   "campaign": {
     "code":"%{json.escape(urldecode(subfield(req.url.qs, "cpCode", "&")))}V",
     "name":"%{json.escape(urldecode(subfield(req.url.qs, "cpName", "&")))}V",
