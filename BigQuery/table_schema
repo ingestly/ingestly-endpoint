@@ -415,6 +415,36 @@
         "mode": "NULLABLE"
     },
     {
+        "name": "survey_name",
+        "type": "STRING",
+        "mode": "NULLABLE"
+    },
+    {
+        "name": "survey_result",
+        "type": "STRING",
+        "mode": "NULLABLE"
+    },
+    {
+        "name": "o2o_name",
+        "type": "STRING",
+        "mode": "NULLABLE"
+    },
+    {
+        "name": "o2o_scanner",
+        "type": "STRING",
+        "mode": "NULLABLE"
+    },
+    {
+        "name": "o2o_key",
+        "type": "STRING",
+        "mode": "NULLABLE"
+    },
+    {
+        "name": "o2o_result",
+        "type": "STRING",
+        "mode": "NULLABLE"
+    },
+    {
         "name": "custom_attr",
         "type": "STRING",
         "mode": "NULLABLE"

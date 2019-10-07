@@ -1,5 +1,7 @@
 {
   "timestamp":"%{begin:%Y-%m-%dT%H:%M:%S}t.%{msec_frac}t",
+  "sdk_version":"%{json.escape(urldecode(subfield(req.url.qs, "sdk", "&")))}V",
+  "endpoint_version":"0.2.0",
   "action":"%{json.escape(urldecode(subfield(req.url.qs, "action", "&")))}V",
   "category":"%{json.escape(urldecode(subfield(req.url.qs, "category", "&")))}V",
   "request_id":"%{digest.hash_sha256(req.url)}V",
@@ -110,6 +112,16 @@
     "search":"%{json.escape(urldecode(subfield(req.url.qs, "rfSearch", "&")))}V",
     "hash":"%{json.escape(urldecode(subfield(req.url.qs, "rfHash", "&")))}V",
     "query":"%{json.escape(urldecode(subfield(req.url.qs, "rfQuery", "&")))}V"
+  },
+  "survey":{
+    "name":"%{json.escape(urldecode(subfield(req.url.qs, "svName", "&")))}V",
+    "result":%{if(subfield(req.url.qs, "svResult", "&"), urldecode(subfield(req.url.qs, "svResult", "&")), "\{\}")}V
+  },
+  "o2o":{
+    "name":"%{json.escape(urldecode(subfield(req.url.qs, "ooName", "&")))}V",
+    "scanner":"%{json.escape(urldecode(subfield(req.url.qs, "ooScanner", "&")))}V",
+    "key":"%{json.escape(urldecode(subfield(req.url.qs, "ooKey", "&")))}V",
+    "result":%{if(subfield(req.url.qs, "ooResult", "&"), urldecode(subfield(req.url.qs, "ooResult", "&")), "\{\}")}V
   },
   "geo": {
     "continent_code":"%{client.geo.continent_code}V",
