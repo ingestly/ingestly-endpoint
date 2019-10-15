@@ -56,7 +56,7 @@ If you will get huge records from the giant website, or you wish to use Data Stu
 2. Go to `Management > Security > Roles`.
 3. Click top-right `Create role` button.
 4. Name this role as `Ingestly`
-5. Type `ingestly` into `Indices` field manually.
+5. Type `ingestly-#{%F}` into `Index` field manually. (an index name will be generated dynamically by [strftime](http://man7.org/linux/man-pages/man3/strftime.3.html). in this case, an index is daily basis with YYYY-MM-DD formatted date.)
 6. Select `create_index`, `create`, `index`, `read`, `write` and `monitor` in `Privileges` field, then save.
 7. Go to `Management > Security > Users`
 8. Click top-right `Create user` button.
