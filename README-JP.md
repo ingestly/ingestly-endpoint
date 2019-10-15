@@ -56,7 +56,7 @@ BigQueryはSQLをサポートし、巨大なログに対して高速にクエリ
 2. `Management > Security > Roles` に進みます。
 3. 右上の `Create role` ボタンを押します。
 4. ロール名を `Ingestly` とします。
-5. `Indices` フィールドに `ingestly` と手動で入力します
+5. `Index` フィールドに `ingestly-#{%F}` と手動で入力します（[strftime](http://man7.org/linux/man-pages/man3/strftime.3.html)による動的なインデックス名を指定可能。この例では YYYY-MM-DD の日別インデックス）
 6. `Privileges` フィールドで、`create_index`, `create`, `index`, `read`, `write` そして `monitor` を選択し、保存します。
 7. `Management > Security > Users` に進みます。
 8. 右上の `Create user` ボタンを押します。

@@ -1,7 +1,7 @@
 {
   "order": 0,
   "index_patterns": [
-    "ingestly"
+    "ingestly-*"
   ],
   "settings": {
     "index": {
