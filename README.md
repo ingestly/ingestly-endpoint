@@ -118,5 +118,26 @@ B. Remove `analysis` section (from line 22 to line 40) from `Elasticsearch/mappi
     - `BasicAuth password` : Set a password for user `Ingestly` on Elasticsearch cluster.
 6. Click `CREATE` to finish the setup process.
 
+#### Integrate with Amazon S3
+1. Open `Logging` in CONFIGURE page.
+2. Click `CREATE ENDPOINT` button and select `Amazon S3`.
+3. Open `attach a condition.` link near highlighted `CONDITION`, and select `CREATE A NEW RESPONSE CONDITION`.
+4. Enter a name like `Data Ingestion` and set `(resp.status == 204 && req.url ~ "^/ingestly-ingest/(.*?)/\?.*" || resp.status == 200 && req.url ~ "^/ingestly-sync/(.*?)/\?.*")` into `Apply if…` field.
+5. Fill information into fields:
+    - `Name` : anything you want.
+    - `Log format` : copy and paste the content of `S3/log_format` file in this repository. You can specify not only CSV but JSON format here (`{ ... }` form).
+    - `Timestamp format` : (not necessary)
+    - `Bucket name` : The name of the bucket in which to store the logs.
+    - `Access key` : An access key of the service account that can write into the bucket above.
+    - `Secret key` : An secret key of the service account that can write into the bucket above.
+    - `Period` : Log rotation interval(seconds). e.g. 600 means 10 minutes.
+    - Advanced options
+        - `Path` : The path within the bucket for placing files. You may specify dynamic variables in strftime format. In order to use Athena's partitioning feature by date, the path name must include `/date=%Y-%m-%d/` format.
+        - `Domain` : The endpoint domain of your S3 bucket region (outside of US Standard region). e.g. Tokyo is `s3.ap-northeast-1.amazonaws.com`
+        - `Select a log line format` : Blank. Otherwise the JSON format will be corrupted.
+        - `Gzip level` : 9. The best compression to save the storage size.
+6. Click `CREATE` to finish the setup process.
+
+
 ## Next Step
 - Now you are ready to receive beacons. You can install [Ingestly Client JS](https://github.com/ingestly/ingestly-client-js) to your website.
