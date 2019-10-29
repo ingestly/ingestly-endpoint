@@ -118,5 +118,25 @@ B. Analyzerを無効化するため、 `analysis` セクション（22行目〜4
     - `BasicAuth password` : Elasticsearch クラスター上の `Ingestly` ユーザーのパスワードをセット
 6. `CREATE` をクリックして設定を完了します。
 
+#### Amazon S3 と連携
+1. CONFIGUREページから `Logging` を開きます。
+2. `CREATE ENDPOINT` をクリックし、 `Amazon S3` を選択します。
+3. ハイライトされている `CONDITION` の近くにある `attach a condition.` リンクを開き、`CREATE A NEW RESPONSE CONDITION` を選択します。
+4. `Data Ingestion` のような名前を入力し、 `Apply if…` には `(resp.status == 204 && req.url ~ "^/ingestly-ingest/(.*?)/\?.*" || resp.status == 200 && req.url ~ "^/ingestly-sync/(.*?)/\?.*")` をセットします。
+5. 各設定項目に情報を：
+    - `Name` : お好きな名前
+    - `Log format` : このリポジトリの `S3/log_format` ファイルの中身をコピー＆ペースト
+    - `Timestamp format` : （不要）
+    - `Bucket name` : ログファイルを出力するS3のバケット名
+    - `Access key` : 上のバケットに書き込み権限を有するサービスアカウントのaccess key
+    - `Secret key` : 上のバケットに書き込み権限を有するサービスアカウントのsecret key
+    - `Period` : ログローテーションの間隔（秒）。600と指定すると10分間隔になる
+    - Advanced options
+        - `Path` : ログファイルの出力先のパス名。strftimeフォーマットを使った動的な指定が可能。Athenaの日付分割機能を使うためには「`/date=%Y-%m-%d/`」という形式を含むパス名にする必要がある
+        - `Domain` : S3のエンドポイントドメイン。東京リージョンでは`s3.ap-northeast-1.amazonaws.com`
+        - `Select a log line format` : Blankを選択。それ以外だとJSONフォーマットが壊れる
+        - `Gzip level` : 9を指定。最高圧縮率でストレージ容量を節約できる
+6. `CREATE` をクリックして設定を完了します。
+
 ## 次のステップ
 - ビーコンを受信する準備が整いました。[Ingestly Client JS](https://github.com/ingestly/ingestly-client-js) をウェブサイトにインストールできます。
