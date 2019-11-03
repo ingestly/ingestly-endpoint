@@ -43,7 +43,7 @@ If you will get huge records from the giant website, or you wish to use Data Stu
 
 #### Create a table for the log data on BigQuery
 1. Go to the GCP console, then open `BigQuery`.
-2. Create a dataset like `Ingestly` if you haven't have.
+2. Create a dataset like `Ingestly` if you haven't had.
 3. Create a table with your preferred table name like `logs`, then enable `Edit as text` in Schema section. (note your table name)
 4. Open `BigQuery/table_schema` file in this repository, copy the content and paste it to the schema text box of table creation modal.
 5. In the `Partition and cluster settings` section, Select `timestamp` column for partitioning.
@@ -51,7 +51,7 @@ If you will get huge records from the giant website, or you wish to use Data Stu
 
 ### Elasticsearch
 
-#### Create an user for Fastly
+#### Create a user for Fastly
 1. Open Kibana UI.
 2. Go to `Management > Security > Roles`.
 3. Click top-right `Create role` button.
@@ -60,7 +60,7 @@ If you will get huge records from the giant website, or you wish to use Data Stu
 6. Select `create_index`, `create`, `index`, `read`, `write` and `monitor` in `Privileges` field, then save.
 7. Go to `Management > Security > Users`
 8. Click top-right `Create user` button.
-9. Name this role as `Ingestly` and fill each fields as you like.
+9. Name this role as `Ingestly` and fill each field as you like.
 10. Select `Ingestly` from a role list, then save.
 
 #### Put a mapping template to Elasticsearch
@@ -69,7 +69,7 @@ If you will get huge records from the giant website, or you wish to use Data Stu
 3. Open `Elasticsearch/mapping_template.json` file and copy & paste the content to the second line of Dev Tools console.
 4. Click the triangle icon on the first line (execute the command)
 
-If you see `Custom Analyzer` related error message when you executed above process, you should chose one of the following selection.
+If you see `Custom Analyzer` related error message when you executed above process, you should choose one of the following selections.
 
 A. Add Natural Language Analysis plugins to Elasticsearch. `analysis-kuromoji` and `analysis-icu` are recommended.
 B. Remove `analysis` section (from line 22 to line 40) from `Elasticsearch/mapping_template.json` to deactivate Analyzer.
@@ -91,7 +91,7 @@ B. Remove `analysis` section (from line 22 to line 40) from `Elasticsearch/mappi
 #### Integrate with Google BigQuery
 1. Open `Logging` in CONFIGURE page.
 2. Click `CREATE ENDPOINT` button and select `Google BigQuery`.
-3. Open `attach a condition.` link near highlighted `CONDITION`, and select `CREATE A NEW RESPONSE CONDITION`.
+3. Open `attach a condition.` link near highlighted `CONDITION` and select `CREATE A NEW RESPONSE CONDITION`.
 4. Enter a name like `Data Ingestion` and set `(resp.status == 204 && req.url ~ "^/ingestly-ingest/(.*?)/\?.*" || resp.status == 200 && req.url ~ "^/ingestly-sync/(.*?)/\?.*")` into `Apply if…` field.
 5. Fill information into fields:
     - `Name` : anything you want.
@@ -99,15 +99,15 @@ B. Remove `analysis` section (from line 22 to line 40) from `Elasticsearch/mappi
     - `Email` : a value from `client_email` field of GCP credential JSON file.
     - `Secret key` : a value from `private_key` field of GCP credential JSON file.
     - `Project ID` : your project ID of GCP.
-    - `Dataset` : a dataset name you created for Ingestly. (eg. `Ingestly`)
-    - `Table` : a table name you created for Ingestly. (eg. `logs`)
+    - `Dataset` : a dataset name you created for Ingestly. (e.g. `Ingestly`)
+    - `Table` : a table name you created for Ingestly. (e.g. `logs`)
     - `Template` : this field can be empty but you can configure time-sliced tables if you enter like `%Y%m%d`.
 6. Click `CREATE` to finish the setup process.
 
 #### Integrate with Elasticsearch
 1. Open `Logging` in CONFIGURE page.
 2. Click `CREATE ENDPOINT` button and select `Elasticsearch`.
-3. Open `attach a condition.` link near highlighted `CONDITION`, and select `CREATE A NEW RESPONSE CONDITION`.
+3. Open `attach a condition.` link near highlighted `CONDITION` and select `CREATE A NEW RESPONSE CONDITION`.
 4. Enter a name like `Data Ingestion` and set `(resp.status == 204 && req.url ~ "^/ingestly-ingest/(.*?)/\?.*" || resp.status == 200 && req.url ~ "^/ingestly-sync/(.*?)/\?.*")` into `Apply if…` field.
 5. Fill information into fields:
     - `Name` : anything you want.
@@ -121,7 +121,7 @@ B. Remove `analysis` section (from line 22 to line 40) from `Elasticsearch/mappi
 #### Integrate with Amazon S3
 1. Open `Logging` in CONFIGURE page.
 2. Click `CREATE ENDPOINT` button and select `Amazon S3`.
-3. Open `attach a condition.` link near highlighted `CONDITION`, and select `CREATE A NEW RESPONSE CONDITION`.
+3. Open `attach a condition.` link near highlighted `CONDITION` and select `CREATE A NEW RESPONSE CONDITION`.
 4. Enter a name like `Data Ingestion` and set `(resp.status == 204 && req.url ~ "^/ingestly-ingest/(.*?)/\?.*" || resp.status == 200 && req.url ~ "^/ingestly-sync/(.*?)/\?.*")` into `Apply if…` field.
 5. Fill information into fields:
     - `Name` : anything you want.
