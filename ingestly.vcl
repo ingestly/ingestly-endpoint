@@ -48,8 +48,7 @@ sub vcl_error {
       set obj.response = "OK";
       set obj.http.Content-Type = "application/json";
       synthetic {"
-      {"id":""} + var.ingestly_id + {"""}{"}"}{"
-      "};
+      {"id":""} + var.ingestly_id + {"""}{"}"}{""};
     }
 
     if (obj.status == 204) {
@@ -58,7 +57,7 @@ sub vcl_error {
     }
 
     set obj.http.Access-Control-Allow-Origin = "*";
-    set obj.http.Set-Cookie  = "ingestlyId=" + var.ingestly_id + "; Max-Age=" + var.cookie_lifetime + "; Domain=" + var.cookie_domain + "; Path=/; SameSite=Lax;";
+    set obj.http.Set-Cookie  = "ingestlyId=" + var.ingestly_id + "; Max-Age=" + var.cookie_lifetime + "; Domain=" + var.cookie_domain + "; Path=/; SameSite=Lax; HttpOnly; Secure;";
     set obj.http.Cache-Control = "no-store";
     return (deliver);
   }
