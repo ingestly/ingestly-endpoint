@@ -51,7 +51,7 @@
   },
   "scroll_depth": {
     "depth":"%{if(subfield(req.url.qs, "srDepth", "&"), subfield(req.url.qs, "srDepth", "&"), "-1")}V",
-    "unit":"%{json.escape(subfield(req.url.qs, "srUnit", "&"))}V"
+    "unit":"%{json.escape(urldecode(subfield(req.url.qs, "srUnit", "&")))}V"
   },
   "read_through": {
     "target_index":"%{if(subfield(req.url.qs, "rdIdx", "&"), subfield(req.url.qs, "rdIdx", "&"), "-1")}V",

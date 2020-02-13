@@ -38,7 +38,7 @@
   "navigation_redirect_count":"%{if(subfield(req.url.qs, "nvRdCnt", "&"), json.escape(subfield(req.url.qs, "nvRdCnt", "&")), "-1")}V",
   "page_height":"%{if(subfield(req.url.qs, "pgH", "&"), subfield(req.url.qs, "pgH", "&"), "-1")}V",
   "scroll_depth":"%{if(subfield(req.url.qs, "srDepth", "&"), subfield(req.url.qs, "srDepth", "&"), "-1")}V",
-  "scroll_unit":"%{json.escape(subfield(req.url.qs, "srUnit", "&"))}V",
+  "scroll_unit":"%{json.escape(urldecode(subfield(req.url.qs, "srUnit", "&")))}V",
   "read_target_index":"%{if(subfield(req.url.qs, "rdIdx", "&"), subfield(req.url.qs, "rdIdx", "&"), "-1")}V",
   "read_target_id":"%{json.escape(urldecode(subfield(req.url.qs, "rdId", "&")))}V",
   "read_text_start_with":"%{json.escape(urldecode(subfield(req.url.qs, "rdTxS", "&")))}V",
