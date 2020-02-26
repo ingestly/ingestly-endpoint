@@ -1,7 +1,7 @@
 {
   "timestamp":"%{begin:%Y-%m-%dT%H:%M:%S}t.%{msec_frac}t",
   "sdk_version":"%{json.escape(urldecode(subfield(req.url.qs, "sdk", "&")))}V",
-  "endpoint_version":"0.2.0",
+  "endpoint_version":"0.2.1",
   "action":"%{json.escape(urldecode(subfield(req.url.qs, "action", "&")))}V",
   "category":"%{json.escape(urldecode(subfield(req.url.qs, "category", "&")))}V",
   "request_id":"%{digest.hash_sha256(req.url)}V",
