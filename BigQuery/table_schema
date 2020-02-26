@@ -25,6 +25,16 @@
         "mode": "REQUIRED"
     },
     {
+        "name": "session_id",
+        "type": "STRING",
+        "mode": "NULLABLE"
+    },
+    {
+        "name": "is_session_new",
+        "type": "BOOLEAN",
+        "mode": "NULLABLE"
+    },
+    {
         "name": "root_id",
         "type": "STRING",
         "mode": "NULLABLE"
