@@ -4,6 +4,8 @@ CREATE EXTERNAL TABLE IF NOT EXISTS mydatabase.ingestly (
   `category` string,
   `request_id` string,
   `ingestly_id` string,
+  `session_id` string,
+  `is_session_new` boolean,
   `root_id` string,
   `since_init_ms` bigint,
   `since_prev_ms` bigint,

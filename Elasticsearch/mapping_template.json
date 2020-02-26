@@ -54,6 +54,9 @@
       "since_prev_ms": {
         "type": "integer"
       },
+      "is_session_new": {
+        "type": "boolean"
+      },
       "connection": {
         "properties": {
           "client_ip": {
