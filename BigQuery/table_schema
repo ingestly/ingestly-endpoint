@@ -30,6 +30,11 @@
         "mode": "NULLABLE"
     },
     {
+        "name": "is_new_id",
+        "type": "BOOLEAN",
+        "mode": "NULLABLE"
+    },
+    {
         "name": "is_session_new",
         "type": "BOOLEAN",
         "mode": "NULLABLE"

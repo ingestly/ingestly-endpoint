@@ -54,6 +54,9 @@
       "since_prev_ms": {
         "type": "integer"
       },
+      "is_id_new": {
+        "type": "boolean"
+      },
       "is_session_new": {
         "type": "boolean"
       },
