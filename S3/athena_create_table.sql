@@ -2,6 +2,8 @@ CREATE EXTERNAL TABLE IF NOT EXISTS mydatabase.ingestly (
   `timestamp` timestamp,
   `action` string,
   `category` string,
+  `cookie` boolean,
+  `consent` string,
   `request_id` string,
   `ingestly_id` string,
   `session_id` string,

@@ -38,7 +38,7 @@ sub vcl_error {
     # Data Collection
 
     # If a visitor accepted Cookies...
-    if(subfield(req.url.qs, "ck", "&") == "1"){
+    if(subfield(req.url.qs, "ck", "&") == "true"){
 
       # Set headers
       set obj.http.Access-Control-Allow-Origin = "*";

@@ -14,6 +14,16 @@
         "type": "STRING",
         "mode": "REQUIRED"
     },
+        {
+        "name": "cookie",
+        "type": "BOOLEAN",
+        "mode": "NULLABLE"
+    },
+    {
+        "name": "consent",
+        "type": "STRING",
+        "mode": "NULLABLE"
+    },
     {
         "name": "request_id",
         "type": "STRING",
@@ -22,7 +32,7 @@
     {
         "name": "ingestly_id",
         "type": "STRING",
-        "mode": "REQUIRED"
+        "mode": "NULLABLE"
     },
     {
         "name": "session_id",

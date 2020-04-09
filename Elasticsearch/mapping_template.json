@@ -45,6 +45,9 @@
       "enabled": true
     },
     "properties": {
+      "cookie": {
+        "type": "boolean"
+      },
       "timestamp": {
         "type": "date"
       },
