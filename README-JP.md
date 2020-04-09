@@ -17,7 +17,7 @@ Ingestlyは、Fastlyを活用してフロントエンドからGoogle BigQueryへ
 - ビーコンに対する最速のレスポンスタイム。エンドポイントにバックエンドはなく、Fastlyのグローバルなエッジノードが応答、レスポンスはHTTP 204でSDKは非同期リクエストを用います。
 - BigQueryに直接連携。複雑な連携設定をする必要はなく、データをバッチでエクスポート・インポートする必要もありません。
 - 簡単に始められます。既にFastlyとGCPのトライアルアカウントをお持ちでしたら、2分以内にIngestlyを使い始められます。
-- WebKitのITPとの親和性。エンドポイントはセキュアフラグ類付きのファーストパーティCookieを発行します。
+- WebKitのITPとの親和性。エンドポイントはSecureとhttpOnlyフラグ付きのファーストパーティCookieを発行します。
 
 ## セットアップ
 
@@ -29,7 +29,7 @@ BigQueryはSQLをサポートし、巨大なログに対して高速にクエリ
 ### 前提条件
 - [Google Cloud Platform](https://cloud.google.com/) のアカウントと、Ingestlyで使うプロジェクト
 - [Fastly](https://www.fastly.com/signup) のアカウントと、Ingestlyで使う service
-- エンドポイントは、指定したドメイン下に `ingestlyId` という名前のCookieを発行します
+- エンドポイントは、指定したドメイン下に `ingestlyId` 、 `ingestlySes` そして `ingestlyConsent` という名前のCookieを発行します。
 
 *GCPプロジェクトとFastlyのserviceはIngestly用に作ることも、既存のものを使うこともできます*
 
@@ -92,7 +92,7 @@ B. Analyzerを無効化するため、 `analysis` セクション（22行目〜4
 1. CONFIGUREページから `Logging` を開きます。
 2. `CREATE ENDPOINT` をクリックし、 `Google BigQuery` を選択します。
 3. ハイライトされている `CONDITION` の近くにある `attach a condition.` リンクを開き、`CREATE A NEW RESPONSE CONDITION` を選択します。
-4. `Data Ingestion` のような名前を入力し、 `Apply if…` には `(resp.status == 204 && req.url ~ "^/ingestly-ingest/(.*?)/\?.*" || resp.status == 200 && req.url ~ "^/ingestly-sync/(.*?)/\?.*")` をセットします。
+4. `Data Ingestion` のような名前を入力し、 `Apply if…` には `(resp.status == 204 && req.url ~ "^/ingestly-ingest/(.*?)/\?.*")` をセットします。
 5. 各設定項目に情報を：
     - `Name` ： お好きな名前
     - `Log format` ： このリポジトリの `BigQuery/log_format` ファイルの中身をコピー＆ペースト
@@ -108,7 +108,7 @@ B. Analyzerを無効化するため、 `analysis` セクション（22行目〜4
 1. CONFIGUREページから `Logging` を開きます。
 2. `CREATE ENDPOINT` をクリックし、 `Elasticsearch` を選択します。
 3. ハイライトされている `CONDITION` の近くにある `attach a condition.` リンクを開き、`CREATE A NEW RESPONSE CONDITION` を選択します。
-4. `Data Ingestion` のような名前を入力し、 `Apply if…` には `(resp.status == 204 && req.url ~ "^/ingestly-ingest/(.*?)/\?.*" || resp.status == 200 && req.url ~ "^/ingestly-sync/(.*?)/\?.*")` をセットします。
+4. `Data Ingestion` のような名前を入力し、 `Apply if…` には `(resp.status == 204 && req.url ~ "^/ingestly-ingest/(.*?)/\?.*")` をセットします。
 5. 各設定項目に情報を：
     - `Name` : お好きな名前
     - `Log format` : このリポジトリの `Elasticsearch/log_format` ファイルの中身をコピー＆ペースト
@@ -122,7 +122,7 @@ B. Analyzerを無効化するため、 `analysis` セクション（22行目〜4
 1. CONFIGUREページから `Logging` を開きます。
 2. `CREATE ENDPOINT` をクリックし、 `Amazon S3` を選択します。
 3. ハイライトされている `CONDITION` の近くにある `attach a condition.` リンクを開き、`CREATE A NEW RESPONSE CONDITION` を選択します。
-4. `Data Ingestion` のような名前を入力し、 `Apply if…` には `(resp.status == 204 && req.url ~ "^/ingestly-ingest/(.*?)/\?.*" || resp.status == 200 && req.url ~ "^/ingestly-sync/(.*?)/\?.*")` をセットします。
+4. `Data Ingestion` のような名前を入力し、 `Apply if…` には `(resp.status == 204 && req.url ~ "^/ingestly-ingest/(.*?)/\?.*")` をセットします。
 5. 各設定項目に情報を：
     - `Name` : お好きな名前
     - `Log format` : このリポジトリの `S3/log_format` ファイルの中身をコピー＆ペースト

@@ -17,7 +17,7 @@ Also, Ingestly can be implemented seamlessly into your existing web site with in
 - Fastest response time for beacons. The endpoint is Fastly's global edge nodes, no backend, response is HTTP 204 and SDK uses ASYNC request.
 - Direct ingestion into Google BigQuery. You don't need to configure any complicated integrations, no need to export/import by batches.
 - Easy to start. You can start using Ingestly within 2 minutes for free if you already have a trial account on Fastly and GCP.
-- WebKit's ITP friendly. The endpoint issues 1st party cookie with secure flags.
+- WebKit's ITP friendly. The endpoint issues 1st party cookies with Secure and httpOnly flags.
 
 ## Setup
 
@@ -29,7 +29,7 @@ If you will get huge records from the giant website, or you wish to use Data Stu
 ### Prerequisites
 - A [Google Cloud Platform](https://cloud.google.com/) account, and a project used for Ingestly.
 - A [Fastly](https://www.fastly.com/signup) account, and a service used for Ingestly.
-- This endpoint issues a cookie named `ingestlyId` under your specified domain name.
+- This endpoint may use cookies named `ingestlyId`, `ingestlySes` and `ingestlyConsent` under your specified domain name.
 
 *Note that a GCP project and a Fastly service can be created for Ingestly or you can use your existing one.*
 
@@ -92,7 +92,7 @@ B. Remove `analysis` section (from line 22 to line 40) from `Elasticsearch/mappi
 1. Open `Logging` in CONFIGURE page.
 2. Click `CREATE ENDPOINT` button and select `Google BigQuery`.
 3. Open `attach a condition.` link near highlighted `CONDITION` and select `CREATE A NEW RESPONSE CONDITION`.
-4. Enter a name like `Data Ingestion` and set `(resp.status == 204 && req.url ~ "^/ingestly-ingest/(.*?)/\?.*" || resp.status == 200 && req.url ~ "^/ingestly-sync/(.*?)/\?.*")` into `Apply if…` field.
+4. Enter a name like `Data Ingestion` and set `(resp.status == 204 && req.url ~ "^/ingestly-ingest/(.*?)/\?.*")` into `Apply if…` field.
 5. Fill information into fields:
     - `Name` : anything you want.
     - `Log format` : copy and paste the content of `BigQuery/log_format` file in this repository.
@@ -108,7 +108,7 @@ B. Remove `analysis` section (from line 22 to line 40) from `Elasticsearch/mappi
 1. Open `Logging` in CONFIGURE page.
 2. Click `CREATE ENDPOINT` button and select `Elasticsearch`.
 3. Open `attach a condition.` link near highlighted `CONDITION` and select `CREATE A NEW RESPONSE CONDITION`.
-4. Enter a name like `Data Ingestion` and set `(resp.status == 204 && req.url ~ "^/ingestly-ingest/(.*?)/\?.*" || resp.status == 200 && req.url ~ "^/ingestly-sync/(.*?)/\?.*")` into `Apply if…` field.
+4. Enter a name like `Data Ingestion` and set `(resp.status == 204 && req.url ~ "^/ingestly-ingest/(.*?)/\?.*")` into `Apply if…` field.
 5. Fill information into fields:
     - `Name` : anything you want.
     - `Log format` : copy and paste the content of `Elasticsearch/log_format` file in this repository.
@@ -122,7 +122,7 @@ B. Remove `analysis` section (from line 22 to line 40) from `Elasticsearch/mappi
 1. Open `Logging` in CONFIGURE page.
 2. Click `CREATE ENDPOINT` button and select `Amazon S3`.
 3. Open `attach a condition.` link near highlighted `CONDITION` and select `CREATE A NEW RESPONSE CONDITION`.
-4. Enter a name like `Data Ingestion` and set `(resp.status == 204 && req.url ~ "^/ingestly-ingest/(.*?)/\?.*" || resp.status == 200 && req.url ~ "^/ingestly-sync/(.*?)/\?.*")` into `Apply if…` field.
+4. Enter a name like `Data Ingestion` and set `(resp.status == 204 && req.url ~ "^/ingestly-ingest/(.*?)/\?.*")` into `Apply if…` field.
 5. Fill information into fields:
     - `Name` : anything you want.
     - `Log format` : copy and paste the content of `S3/log_format` file in this repository. You can specify not only CSV but JSON format here (`{ ... }` form).
