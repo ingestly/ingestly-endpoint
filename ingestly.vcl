@@ -63,11 +63,6 @@ sub vcl_error {
       add obj.http.Set-Cookie = "ingestlySes=" + var.session_id
                               + "; Path=/; SameSite=Lax; HttpOnly; Secure;";
       
-    }else{
-
-      # Anonymous Mode
-      set var.ingestly_id = "anonymous";
-
     }
 
     return (deliver);
