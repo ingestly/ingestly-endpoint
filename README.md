@@ -92,7 +92,7 @@ B. Remove `analysis` section (from line 22 to line 40) from `Elasticsearch/mappi
 1. Open `Logging` in CONFIGURE page.
 2. Click `CREATE ENDPOINT` button and select `Google BigQuery`.
 3. Open `attach a condition.` link near highlighted `CONDITION` and select `CREATE A NEW RESPONSE CONDITION`.
-4. Enter a name like `Data Ingestion` and set `(resp.status == 204 && req.url ~ "^/ingestly-ingest/(.*?)/\?.*")` into `Apply if…` field.
+4. Enter a name like `Data Ingestion` and set `(resp.status == 204 && req.url ~ "^/ingestly-ingest/(.*?)/\?.*" || resp.status == 200 && req.url ~ "^/ingestly-sync/(.*?)/\?.*")` into `Apply if…` field.
 5. Fill information into fields:
     - `Name` : anything you want.
     - `Log format` : copy and paste the content of `BigQuery/log_format` file in this repository.
@@ -108,7 +108,7 @@ B. Remove `analysis` section (from line 22 to line 40) from `Elasticsearch/mappi
 1. Open `Logging` in CONFIGURE page.
 2. Click `CREATE ENDPOINT` button and select `Elasticsearch`.
 3. Open `attach a condition.` link near highlighted `CONDITION` and select `CREATE A NEW RESPONSE CONDITION`.
-4. Enter a name like `Data Ingestion` and set `(resp.status == 204 && req.url ~ "^/ingestly-ingest/(.*?)/\?.*")` into `Apply if…` field.
+4. Enter a name like `Data Ingestion` and set `(resp.status == 204 && req.url ~ "^/ingestly-ingest/(.*?)/\?.*" || resp.status == 200 && req.url ~ "^/ingestly-sync/(.*?)/\?.*")` into `Apply if…` field.
 5. Fill information into fields:
     - `Name` : anything you want.
     - `Log format` : copy and paste the content of `Elasticsearch/log_format` file in this repository.
@@ -122,7 +122,7 @@ B. Remove `analysis` section (from line 22 to line 40) from `Elasticsearch/mappi
 1. Open `Logging` in CONFIGURE page.
 2. Click `CREATE ENDPOINT` button and select `Amazon S3`.
 3. Open `attach a condition.` link near highlighted `CONDITION` and select `CREATE A NEW RESPONSE CONDITION`.
-4. Enter a name like `Data Ingestion` and set `(resp.status == 204 && req.url ~ "^/ingestly-ingest/(.*?)/\?.*")` into `Apply if…` field.
+4. Enter a name like `Data Ingestion` and set `(resp.status == 204 && req.url ~ "^/ingestly-ingest/(.*?)/\?.*" || resp.status == 200 && req.url ~ "^/ingestly-sync/(.*?)/\?.*")` into `Apply if…` field.
 5. Fill information into fields:
     - `Name` : anything you want.
     - `Log format` : copy and paste the content of `S3/log_format` file in this repository. You can specify not only CSV but JSON format here (`{ ... }` form).

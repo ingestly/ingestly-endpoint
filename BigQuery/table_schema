@@ -15,6 +15,11 @@
         "mode": "NULLABLE"
     },
     {
+        "name": "endpoint_version",
+        "type": "STRING",
+        "mode": "NULLABLE"
+    },
+    {
         "name": "action",
         "type": "STRING",
         "mode": "REQUIRED"
