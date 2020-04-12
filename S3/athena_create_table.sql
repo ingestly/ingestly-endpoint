@@ -1,5 +1,8 @@
 CREATE EXTERNAL TABLE IF NOT EXISTS mydatabase.ingestly (
   `timestamp` timestamp,
+  `sdk_version` string,
+  `sdk_api_key` string,
+  `endpoint_version` string,
   `action` string,
   `category` string,
   `cookie` boolean,
