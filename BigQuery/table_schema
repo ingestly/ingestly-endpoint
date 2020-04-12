@@ -4,15 +4,15 @@
         "type": "TIMESTAMP",
         "mode": "REQUIRED"
     },
-        {
+    {
         "name": "sdk_version",
         "type": "STRING",
-        "mode": "REQUIRED"
+        "mode": "NULLABLE"
     },
-        {
+    {
         "name": "sdk_api_key",
         "type": "STRING",
-        "mode": "REQUIRED"
+        "mode": "NULLABLE"
     },
     {
         "name": "action",
