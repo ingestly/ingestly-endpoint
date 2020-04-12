@@ -99,8 +99,8 @@ sub vcl_error {
 
     # Cookie Opt-out
     if(subfield(req.url.qs, "dc", "&") == "1"){
-      add obj.http.Set-Cookie = "ingestlyId=";
-      add obj.http.Set-Cookie = "ingestlySes=";
+      add obj.http.Set-Cookie = "ingestlyId=0; Max-Age=0; Path=/; SameSite=Lax; HttpOnly; Secure;";
+      add obj.http.Set-Cookie = "ingestlySes=0; Max-Age=0; Path=/; SameSite=Lax; HttpOnly; Secure;";
     }
 
     # Save Consent Information
