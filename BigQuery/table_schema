@@ -50,7 +50,7 @@
         "mode": "NULLABLE"
     },
     {
-        "name": "is_new_id",
+        "name": "is_id_new",
         "type": "BOOLEAN",
         "mode": "NULLABLE"
     },
