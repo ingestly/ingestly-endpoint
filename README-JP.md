@@ -92,7 +92,7 @@ B. Analyzerを無効化するため、 `analysis` セクション（22行目〜4
 1. CONFIGUREページから `Logging` を開きます。
 2. `CREATE ENDPOINT` をクリックし、 `Google BigQuery` を選択します。
 3. ハイライトされている `CONDITION` の近くにある `attach a condition.` リンクを開き、`CREATE A NEW RESPONSE CONDITION` を選択します。
-4. `Data Ingestion` のような名前を入力し、 `Apply if…` には `(resp.status == 204 && req.url ~ "^/ingestly-ingest/(.*?)/\?.*")` をセットします。
+4. `Data Ingestion` のような名前を入力し、 `Apply if…` には `(resp.status == 204 && req.url ~ "^/ingestly-ingest/(.*?)/\?.*" || resp.status == 200 && req.url ~ "^/ingestly-sync/(.*?)/\?.*")` をセットします。
 5. 各設定項目に情報を：
     - `Name` ： お好きな名前
     - `Log format` ： このリポジトリの `BigQuery/log_format` ファイルの中身をコピー＆ペースト
@@ -108,7 +108,7 @@ B. Analyzerを無効化するため、 `analysis` セクション（22行目〜4
 1. CONFIGUREページから `Logging` を開きます。
 2. `CREATE ENDPOINT` をクリックし、 `Elasticsearch` を選択します。
 3. ハイライトされている `CONDITION` の近くにある `attach a condition.` リンクを開き、`CREATE A NEW RESPONSE CONDITION` を選択します。
-4. `Data Ingestion` のような名前を入力し、 `Apply if…` には `(resp.status == 204 && req.url ~ "^/ingestly-ingest/(.*?)/\?.*")` をセットします。
+4. `Data Ingestion` のような名前を入力し、 `Apply if…` には `(resp.status == 204 && req.url ~ "^/ingestly-ingest/(.*?)/\?.*" || resp.status == 200 && req.url ~ "^/ingestly-sync/(.*?)/\?.*")` をセットします。
 5. 各設定項目に情報を：
     - `Name` : お好きな名前
     - `Log format` : このリポジトリの `Elasticsearch/log_format` ファイルの中身をコピー＆ペースト
@@ -122,7 +122,7 @@ B. Analyzerを無効化するため、 `analysis` セクション（22行目〜4
 1. CONFIGUREページから `Logging` を開きます。
 2. `CREATE ENDPOINT` をクリックし、 `Amazon S3` を選択します。
 3. ハイライトされている `CONDITION` の近くにある `attach a condition.` リンクを開き、`CREATE A NEW RESPONSE CONDITION` を選択します。
-4. `Data Ingestion` のような名前を入力し、 `Apply if…` には `(resp.status == 204 && req.url ~ "^/ingestly-ingest/(.*?)/\?.*")` をセットします。
+4. `Data Ingestion` のような名前を入力し、 `Apply if…` には `(resp.status == 204 && req.url ~ "^/ingestly-ingest/(.*?)/\?.*" || resp.status == 200 && req.url ~ "^/ingestly-sync/(.*?)/\?.*")` をセットします。
 5. 各設定項目に情報を：
     - `Name` : お好きな名前
     - `Log format` : このリポジトリの `S3/log_format` ファイルの中身をコピー＆ペースト

@@ -5,7 +5,7 @@
   "endpoint_version":"1.0.0",
   "action":"%{json.escape(urldecode(subfield(req.url.qs, "action", "&")))}V",
   "category":"%{json.escape(urldecode(subfield(req.url.qs, "category", "&")))}V",
-  "cookie":"%{json.escape(urldecode(subfield(req.url.qs, "ck", "&")))}V",
+  "cookie":"%{json.escape(if(subfield(req.url.qs, "ck", "&") != "false", "true", "false"))}V",
   "consent":%{if(subfield(req.url.qs, "consent", "&"), urldecode(subfield(req.url.qs, "consent", "&")), "\{\}")}V,
   "request_id":"%{digest.hash_sha256(req.url)}V",
   "ingestly_id":"%{json.escape(if(req.http.Cookie:ingestlyId, req.http.Cookie:ingestlyId, subfield(req.url.qs, "rootId", "&")))}V",
