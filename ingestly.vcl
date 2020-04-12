@@ -19,7 +19,7 @@ sub vcl_recv {
       error 204 "No Content";
     }else if(req.url ~ "^/ingestly-sync/(.*?)/\?.*"){
       # Valid Sync (< 1.0.0)
-       error 200 "OK";
+      error 200 "OK";
     }else{
       # Invalid Request (if you configure Fastly to use only for Ingestly, use the below.)
       # error 400 "Bad Request";
