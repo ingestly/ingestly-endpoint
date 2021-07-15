@@ -11,8 +11,13 @@ table apikeys {
 sub vcl_recv {
 #FASTLY recv
   if(table.lookup(apikeys, subfield(req.url.qs, "key", "&")) != "true"){
-    # Invalid API Key (if you configure Fastly to use only for Ingestly, use the below.)
-    # error 401 "Unauthorized";
+    if(req.url ~ "^/\.well-known/(attribution-reporting|private-click-measurement)/.*"){
+      # Attribution Reporting & Private Click Measurement
+      error 200 "OK";
+    }else{
+      # Invalid API Key (if you configure Fastly to use only for Ingestly, use the below.)
+      # error 401 "Unauthorized";
+    }
   }else{
     if(req.url ~ "^/ingestly-ingest/(.*?)/\?.*" || req.url ~ "^/ingestly-consent/(.*?)/\?.*" || req.url ~ "^/ingestly-bulk/(.*?)/\?.*"){
       # Valid Ingestion
@@ -111,6 +116,9 @@ sub vcl_error {
                               + "; Path=/; SameSite=Lax; Secure;";
     }
 
+    return (deliver);
+  }elseif(req.url ~ "^/\.well-known/(attribution-reporting|private-click-measurement)/.*"){
+    # Attribution Reporting & Private Click Measurement
     return (deliver);
   }
 }
