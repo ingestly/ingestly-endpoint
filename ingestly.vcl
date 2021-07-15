@@ -11,7 +11,7 @@ table apikeys {
 sub vcl_recv {
 #FASTLY recv
   if(table.lookup(apikeys, subfield(req.url.qs, "key", "&")) != "true"){
-    if(req.url ~ "^\.well-known\/attribution-reporting\/.*" || req.url ~ "^\.well-known\/private-click-measurement\/.*"){
+    if(req.url ~ "^/\.well-known/(attribution-reporting|private-click-measurement)/.*"){
       # Attribution Reporting & Private Click Measurement
       error 200 "OK";
     }else{
@@ -116,6 +116,9 @@ sub vcl_error {
                               + "; Path=/; SameSite=Lax; Secure;";
     }
 
+    return (deliver);
+  }elseif(req.url ~ "^/\.well-known/(attribution-reporting|private-click-measurement)/.*"){
+    # Attribution Reporting & Private Click Measurement
     return (deliver);
   }
 }
