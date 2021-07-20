@@ -12,8 +12,11 @@ sub vcl_recv {
 #FASTLY recv
   if(table.lookup(apikeys, subfield(req.url.qs, "key", "&")) != "true"){
     if(req.url ~ "^/\.well-known/(attribution-reporting|private-click-measurement)/.*"){
-      # Attribution Reporting & Private Click Measurement
+      # Attribution Reporting & Private Click Measurement (Report Endpoint)
       error 200 "OK";
+    }elseif(req.url ~ "^/ingestly-attribution/pcm/\?.*"){
+      # Private Click Measurement (Redirector)
+      error 302 "Found";
     }else{
       # Invalid API Key (if you configure Fastly to use only for Ingestly, use the below.)
       # error 401 "Unauthorized";
@@ -74,7 +77,6 @@ sub vcl_error {
       }
 
     }
-
     return (deliver);
 
   }elseif(req.url ~ "^/ingestly-sync/(.*?)/\?.*"){
@@ -115,10 +117,16 @@ sub vcl_error {
                               + "; Domain=" + var.cookie_domain
                               + "; Path=/; SameSite=Lax; Secure;";
     }
+    return (deliver);
 
+  }elseif(req.url ~ "^/ingestly-attribution/pcm/\?.*"){
+    # Private Click Measurement (Redirector)
+    set obj.http.Location = "https://" + req.http.host + "/.well-known/private-click-measurement/trigger-attribution/" + subfield(req.url.qs, "trigger_data", "&") + "/" + subfield(req.url.qs, "trigger_priority", "&");
     return (deliver);
+
   }elseif(req.url ~ "^/\.well-known/(attribution-reporting|private-click-measurement)/.*"){
-    # Attribution Reporting & Private Click Measurement
+    # Attribution Reporting & Private Click Measurement (Common)
     return (deliver);
+
   }
 }
