@@ -175,12 +175,32 @@
         "mode": "NULLABLE"
     },
     {
-        "name": "device_os",
+        "name": "device_is_bot",
+        "type": "BOOLEAN",
+        "mode": "NULLABLE"
+    },
+    {
+        "name": "device_bot_name",
         "type": "STRING",
         "mode": "NULLABLE"
     },
     {
-        "name": "device_platform",
+        "name": "device_os_name",
+        "type": "STRING",
+        "mode": "NULLABLE"
+    },
+    {
+        "name": "device_os_version",
+        "type": "STRING",
+        "mode": "NULLABLE"
+    },
+    {
+        "name": "device_browser_name",
+        "type": "STRING",
+        "mode": "NULLABLE"
+    },
+    {
+        "name": "device_browser_version",
         "type": "STRING",
         "mode": "NULLABLE"
     },
@@ -531,6 +551,11 @@
     },
     {
         "name": "geo_country_code",
+        "type": "STRING",
+        "mode": "NULLABLE"
+    },
+        {
+        "name": "geo_postal_code",
         "type": "STRING",
         "mode": "NULLABLE"
     },

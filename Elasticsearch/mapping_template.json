@@ -89,6 +89,9 @@
           },
           "viewport_width": {
             "type": "integer"
+          },
+          "is_bot": {
+            "type": "boolean"
           }
         }
       },
