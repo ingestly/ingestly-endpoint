@@ -14,7 +14,7 @@ sub vcl_recv {
     if(req.url ~ "^/\.well-known/(attribution-reporting|private-click-measurement)/.*"){
       # Attribution Reporting & Private Click Measurement (Report Endpoint)
       error 200 "OK";
-    }elseif(req.url ~ "^/ingestly-attribution/pcm/\?.*"){
+    }elseif(req.url ~ "^/ingestly-pixel/.*?/\?.*"){
       # Private Click Measurement (Redirector)
       error 302 "Found";
     }else{
@@ -119,7 +119,7 @@ sub vcl_error {
     }
     return (deliver);
 
-  }elseif(req.url ~ "^/ingestly-attribution/pcm/\?.*"){
+  }elseif(req.url ~ "^/ingestly-pixel/pcm/\?.*"){
     # Private Click Measurement (Redirector)
     set obj.http.Location = "https://" + req.http.host + "/.well-known/private-click-measurement/trigger-attribution/" + subfield(req.url.qs, "trigger_data", "&") + "/" + subfield(req.url.qs, "trigger_priority", "&");
     return (deliver);
