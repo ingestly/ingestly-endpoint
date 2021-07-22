@@ -89,11 +89,10 @@ B. Analyzerを無効化するため、 `analysis` セクション（22行目〜4
 2. `Create a dictionary` ボタンをクリックし、 `ingestly_apikeys` を作成します。
 3. `ingestly_apikeys` に対して `Add item` をクリックし、 `key` に `2ee204330a7b2701a6bf413473fcc486` を、 `value` に `true` をセットして保存します。
 4. 同様に、`Create a dictionary` ボタンをクリックし、 `ingestly_metadata` を作成します。
-5. 以下のテーブルの通り、3つのitemを `ingestly_metadata` に追加します。
+5. 以下のテーブルの通り、2つのitemを `ingestly_metadata` に追加します。
 
 |key|value|description|
 |:----|:----|:----|
-|use_cookie|`true`|エンドポイント側でCookieをセットする場合に `true` を指定します。 `false` を指定するとサーバーサイドCookieを利用しません。|
 |cookie_domain|`example.com`|エンドポイントがセットするCookieのドメイン名|
 |cookie_lifetime|`31536000`|エンドポイントがセットするCookieの有効期間|
 

@@ -89,11 +89,10 @@ B. Remove `analysis` section (from line 22 to line 40) from `Elasticsearch/mappi
 2. Create a dictionary named ``ingestly_apikeys`` by clicking `Create a dictionary` button.
 3. Add an item with `key` as `2ee204330a7b2701a6bf413473fcc486`, `value` as `true` from `Add item` link for `ingestly_apikeys`.
 4. In the same way, create a dictionary named `ingestly_metadata` by clicking `Create a dictionary` button.
-5. Add the following three items to the dictionary `ingestly_metadata`.
+5. Add the following two items to the dictionary `ingestly_metadata`.
 
 |key|value|description|
 |:----|:----|:----|
-|use_cookie|`true`|If you want to set Cookies from the Endpoint, set `true`. You can stop using server-side Cookies if you set `false`.|
 |cookie_domain|`example.com`|A domain name of Cookies set by the Endpoint.|
 |cookie_lifetime|`31536000`|A Cookie lifetime of Cookies set by the Endpoint.|
 #### Custom VCL
