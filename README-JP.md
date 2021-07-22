@@ -44,10 +44,11 @@ BigQueryはSQLをサポートし、巨大なログに対して高速にクエリ
 #### ログデータ用のテーブルをBigQueryに作成
 1. GCPコンソールから `BigQuery` を開きます。
 2. まだデータセットをお持ちで無ければ、`Ingestly` のようなデータセットを作成します。
-3. `logs` のような任意の名前のテーブルを作成し、スキーマ欄の `テキストとして編集` を有効にします。（テーブル名を控えておきます）
+3. `access_log` のような任意の名前のテーブルを作成し、スキーマ欄の `テキストとして編集` を有効にします。（テーブル名を控えておきます）
 4. このリポジトリの `BigQuery/table_schema` ファイルを開き、中身をコピー、テーブル作成画面のスキーマのテキストボックスにペーストします。
 5. `パーティションとクラスタの設定` 欄でパーティショニングに `timestamp` カラムを選択します。
-6. テーブル作成を完了します。
+6. `クラスタリング順序（オプション）` 欄で `action,category` を指定します。
+7. テーブル作成を完了します。
 
 ### Elasticsearch
 
@@ -83,10 +84,22 @@ B. Analyzerを無効化するため、 `analysis` セクション（22行目〜4
 
 ### Fastly
 
+#### Dictionaries
+1. 設定する service のCONFIGUREページから `Data` メニュー下の `Dictionaries` を開きます。
+2. `Create a dictionary` ボタンをクリックし、 `ingestly_apikeys` を作成します。
+3. `ingestly_apikeys` に対して `Add item` をクリックし、 `key` に `2ee204330a7b2701a6bf413473fcc486` を、 `value` に `true` をセットして保存します。
+4. 同様に、`Create a dictionary` ボタンをクリックし、 `ingestly_metadata` を作成します。
+5. 以下のテーブルの通り、3つのitemを `ingestly_metadata` に追加します。
+
+|key|value|description|
+|:----|:----|:----|
+|use_cookie|`true`|エンドポイント側でCookieをセットする場合に `true` を指定します。 `false` を指定するとサーバーサイドCookieを利用しません。|
+|cookie_domain|`example.com`|エンドポイントがセットするCookieのドメイン名|
+|cookie_lifetime|`31536000`|エンドポイントがセットするCookieの有効期間|
+
 #### Custom VCL
-1. このリポジトリの `ingestly.vcl` ファイルを開き、`cookie_domain` の値をCookieのドメインが一致するように変更し、保存します。
-2. 設定する service のCONFIGUREページから `Custom VCL`を開きます。
-3. `Upload a VCL file` ボタンをクリックし、`Ingestly` 等の名前を指定、 `ingestly.vcl` を選択してファイルをアップロードします。
+1. CONFIGUREページから `Custom VCL`を開きます。
+2. `Upload a VCL file` ボタンをクリックし、`Ingestly` 等の名前を指定、 `ingestly.vcl` を選択してファイルをアップロードします。
 
 #### Google BigQuery と連携
 1. CONFIGUREページから `Logging` を開きます。
@@ -139,4 +152,4 @@ B. Analyzerを無効化するため、 `analysis` セクション（22行目〜4
 6. `CREATE` をクリックして設定を完了します。
 
 ## 次のステップ
-- ビーコンを受信する準備が整いました。[Ingestly Client JS](https://github.com/ingestly/ingestly-client-js) をウェブサイトにインストールできます。
+- ビーコンを受信する準備が整いました。[Ingestly Client JavaScript](https://github.com/ingestly/ingestly-client-javascript) をウェブサイトにインストールできます。
