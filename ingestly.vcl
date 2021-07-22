@@ -27,20 +27,18 @@ sub vcl_recv {
 sub vcl_error {
 #FASTLY error
   
-  declare local var.ingestly_use_cookie STRING;
   declare local var.ingestly_cookie_domain STRING;
   declare local var.ingestly_cookie_lifetime STRING;
   declare local var.ingestly_id STRING;
   declare local var.ingestly_session_id STRING;
 
-  set var.ingestly_use_cookie = table.lookup(ingestly_metadata, "use_cookie");
   set var.ingestly_cookie_domain = table.lookup(ingestly_metadata, "cookie_domain");
   set var.ingestly_cookie_lifetime = table.lookup(ingestly_metadata, "cookie_lifetime");
 
   # Data Collection
   if(req.url ~ "^/ingestly-ingest/(.*?)/\?.*" || req.url ~ "^/ingestly-bulk/(.*?)/\?.*"){
     
-    # If a visitor accepted Cookies... (or ck flag does not exists with older SDK)
+    # If a visitor accepted Cookies...
     if(subfield(req.url.qs, "ck", "&") != "false"){
 
       # Set headers
@@ -52,11 +50,9 @@ sub vcl_error {
         set var.ingestly_id = req.http.Cookie:ingestlyId;
       }else{
         set var.ingestly_id = subfield(req.url.qs, "rootId", "&");
-        if(var.ingestly_use_cookie == "true"){
-          add obj.http.Set-Cookie = "ingestlyId=" + var.ingestly_id
-                                  + "; Max-Age=" + var.ingestly_cookie_lifetime
-                                  + "; Path=/; SameSite=Lax; HttpOnly; Secure;";
-        }
+        add obj.http.Set-Cookie = "ingestlyId=" + var.ingestly_id
+                                + "; Max-Age=" + var.ingestly_cookie_lifetime
+                                + "; Path=/; SameSite=Lax; HttpOnly; Secure;";
       }
 
       if(req.url ~ "^/ingestly-ingest/(.*?)/\?.*"){
@@ -66,10 +62,8 @@ sub vcl_error {
         }else{
           set var.ingestly_session_id = subfield(req.url.qs, "rootId", "&");
         }
-        if(var.ingestly_use_cookie == "true"){
-          add obj.http.Set-Cookie = "ingestlySes=" + var.ingestly_session_id
-                                  + "; Path=/; SameSite=Lax; HttpOnly; Secure;";
-        }
+        add obj.http.Set-Cookie = "ingestlySes=" + var.ingestly_session_id
+                                + "; Path=/; SameSite=Lax; HttpOnly; Secure;";
       }
 
     }
