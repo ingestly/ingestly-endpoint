@@ -44,10 +44,11 @@ If you will get huge records from the giant website, or you wish to use Data Stu
 #### Create a table for the log data on BigQuery
 1. Go to the GCP console, then open `BigQuery`.
 2. Create a dataset like `Ingestly` if you haven't had.
-3. Create a table with your preferred table name like `logs`, then enable `Edit as text` in Schema section. (note your table name)
+3. Create a table with your preferred table name like `access_log`, then enable `Edit as text` in Schema section. (note your table name)
 4. Open `BigQuery/table_schema` file in this repository, copy the content and paste it to the schema text box of table creation modal.
 5. In the `Partition and cluster settings` section, Select `timestamp` column for partitioning.
-6. Finish creating the table.
+6. Specify `action,category` to the `Clustering order (optional)` field.
+7. Finish creating the table.
 
 ### Elasticsearch
 
@@ -83,10 +84,20 @@ B. Remove `analysis` section (from line 22 to line 40) from `Elasticsearch/mappi
 
 ### Fastly
 
+#### Dictionaries
+1. Open `Dictionaries` under `Data` menu in CONFIGURE page under your service.
+2. Create a dictionary named ``ingestly_apikeys`` by clicking `Create a dictionary` button.
+3. Add an item with `key` as `2ee204330a7b2701a6bf413473fcc486`, `value` as `true` from `Add item` link for `ingestly_apikeys`.
+4. In the same way, create a dictionary named `ingestly_metadata` by clicking `Create a dictionary` button.
+5. Add the following two items to the dictionary `ingestly_metadata`.
+
+|key|value|description|
+|:----|:----|:----|
+|cookie_domain|`example.com`|A domain name of Cookies set by the Endpoint.|
+|cookie_lifetime|`31536000`|A Cookie lifetime of Cookies set by the Endpoint.|
 #### Custom VCL
-1. Open `ingestly.vcl` file in this repository and change a value for `cookie_domain` to make a cookie compatible with your domain, then save the file.
-2. Open `Custom VCL` in CONFIGURE page under your service.
-3. Click `Upload a VCL file` button, then set preferred name like `Ingestly`, select `ingestly.vcl` and upload the file.
+1. Open `Custom VCL` in CONFIGURE page.
+2. Click `Upload a VCL file` button, then set preferred name like `Ingestly`, select `ingestly.vcl` and upload the file.
 
 #### Integrate with Google BigQuery
 1. Open `Logging` in CONFIGURE page.
@@ -140,4 +151,4 @@ B. Remove `analysis` section (from line 22 to line 40) from `Elasticsearch/mappi
 
 
 ## Next Step
-- Now you are ready to receive beacons. You can install [Ingestly Client JS](https://github.com/ingestly/ingestly-client-js) to your website.
+- Now you are ready to receive beacons. You can install [Ingestly Client JavaScript](https://github.com/ingestly/ingestly-client-javascript) to your website.
